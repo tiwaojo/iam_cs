@@ -1,0 +1,74 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-dockerfile
+{
+	"name": "RSS-Client Flutter",
+	"build": {
+		// Sets the run context to one level up instead of the .devcontainer folder.
+		"context": "..",
+		// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
+		"dockerfile": "../Dockerfile"
+	},
+
+	// "dockerComposeFile": [
+	// 	"../docker-compose.yml",
+	// 	"docker-compose.yml"
+	// ],
+
+	// "workspaceFolder": "/workspace",
+
+    // "workspaceMount": "source=/workspace,target=/workspace,type=bind,consistency=delegated",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/developer/workspace,type=bind,consistency=delegated",
+    // "workspaceMount": "source=${localWorkspaceFolder}/workspace,target=/home/developer/workspace,type=bind,consistency=delegated",
+    "workspaceFolder": "/home/developer/workspace",
+	// "service": "rsd-yolov5-model",
+
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/devcontainers/features/git-lfs:1": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		// "ghcr.io/devcontainers/features/nvidia-cuda:1": {
+		// 	"version": "latest",
+		// },
+		// "ghcr.io/devcontainers-contrib/features/firebase-cli:2": {}
+	},
+
+	"runArgs": [ "--privileged"],
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Uncomment the next line to run commands after the container is created.
+	"postCreateCommand": "cat /etc/os-release && flutter doctor",
+
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"dart-code.flutter",
+				"Dart-Code.flutter",
+				"marcelovelasquez.flutter-tree"
+			]
+		}
+	},
+    "mounts": ["source=/dev/bus/usb,target=/dev/bus/usb,type=bind"],
+
+	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "developer"
+	// "remoteUser": "devcontainer" // leave commented
+}
+
+
+// {
+//     "name": "flutter_docker",
+//     "context": "..",
+//     "dockerFile": "../Dockerfile",
+//     "remoteUser": "developer",
+//     "settings": {
+//       "terminal.integrated.shell.linux": null
+//     },
+//     "runArgs": ["--privileged"],
+//     "extensions": ["dart-code.flutter"],
+//   }
