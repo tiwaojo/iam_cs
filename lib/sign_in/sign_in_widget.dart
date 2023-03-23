@@ -290,7 +290,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                       print(
                                           'Button-ForgotPassword pressed ...');
                                     },
-                                    text: 'Forgot Password?',
+                                    text: '',
                                     options: FFButtonOptions(
                                       width: 170.0,
                                       height: 40.0,
