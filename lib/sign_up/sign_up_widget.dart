@@ -285,12 +285,14 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                 children: [
                                   InkWell(
                                     onTap: () async {
-                                      await RegisterCall.call(
-                                        userEmail:
+                                      _model.username = await RegisterCall.call(
+                                        userName:
                                             _model.emailAddressController.text,
                                         userPassword:
                                             _model.passwordController.text,
                                       );
+
+                                      setState(() {});
                                     },
                                     child: Container(
                                       width: 150.0,
@@ -400,7 +402,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                         return;
                                       }
 
-                                      context.goNamedAuth('posts', mounted);
+                                      context.goNamedAuth('comments', mounted);
                                     },
                                     text: 'Continue as Guest',
                                     options: FFButtonOptions(

@@ -347,7 +347,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                                   .toString();
                                             });
 
-                                            context.goNamed('posts');
+                                            context.goNamed('comments');
                                           }
 
                                           setState(() {});
@@ -478,7 +478,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                         return;
                                       }
 
-                                      context.goNamedAuth('posts', mounted);
+                                      context.goNamedAuth('comments', mounted);
                                     },
                                     text: 'Continue as Guest',
                                     options: FFButtonOptions(

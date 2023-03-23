@@ -117,7 +117,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
               child: InkWell(
                 onTap: () async {
-                  context.goNamed('posts');
+                  context.pushNamed('comments');
                 },
                 child: Container(
                   width: double.infinity,
@@ -141,7 +141,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                           ),
                         ),
                         Text(
-                          'Posts',
+                          'Comments',
                           style: FlutterFlowTheme.of(context).bodyText1,
                         ),
                       ],

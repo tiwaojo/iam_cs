@@ -11,16 +11,22 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
 class RegisterCall {
   static Future<ApiCallResponse> call({
-    String? userEmail = '',
+    String? userName = '',
     String? userPassword = '',
   }) {
+    final body = '''
+{
+  "username": "${userName}",
+  "password": "${userPassword}"
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'register',
       apiUrl: 'http://localhost:8080/api/v1/register',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
-      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      body: body,
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -69,8 +75,10 @@ class ThreadCall {
 
 class ThreadeditCall {
   static Future<ApiCallResponse> call({
-    int? create,
+    dynamic? editThreadJson,
   }) {
+    final editThread = _serializeJson(editThreadJson);
+
     return ApiManager.instance.makeApiCall(
       callName: 'threadedit',
       apiUrl: 'http://localhost:8080/api/v1/thread/edit',
@@ -103,7 +111,11 @@ class ThreadlistCall {
 }
 
 class ThreadcreateCall {
-  static Future<ApiCallResponse> call() {
+  static Future<ApiCallResponse> call({
+    String? threadName = '',
+    String? threadDescription = '',
+    String? dateCreated = '',
+  }) {
     return ApiManager.instance.makeApiCall(
       callName: 'threadcreate',
       apiUrl: 'localhost:8080/api/v1/thread/create',
@@ -120,13 +132,17 @@ class ThreadcreateCall {
 }
 
 class ThreaddeleteCall {
-  static Future<ApiCallResponse> call() {
+  static Future<ApiCallResponse> call({
+    int? threadId,
+  }) {
     return ApiManager.instance.makeApiCall(
       callName: 'threaddelete',
       apiUrl: 'localhost:8080/api/v1/thread/delete/{threadId}',
       callType: ApiCallType.DELETE,
       headers: {},
-      params: {},
+      params: {
+        'threadId': threadId,
+      },
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -157,7 +173,11 @@ class CommentlistCall {
 }
 
 class CommentcreateCall {
-  static Future<ApiCallResponse> call() {
+  static Future<ApiCallResponse> call({
+    String? commentTitle = '',
+    String? commentContent = '',
+    String? dateCreated = '',
+  }) {
     return ApiManager.instance.makeApiCall(
       callName: 'commentcreate',
       apiUrl: 'http://localhost:8080/api/v1/comment/create',
@@ -174,13 +194,21 @@ class CommentcreateCall {
 }
 
 class EditcommentCall {
-  static Future<ApiCallResponse> call() {
+  static Future<ApiCallResponse> call({
+    dynamic? editCommentJson,
+  }) {
+    final editComment = _serializeJson(editCommentJson);
+    final body = '''
+{
+  "comment": ${editComment}
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'editcomment',
       apiUrl: 'http://localhost:8080/api/v1/comment/edit',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
+      body: body,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
@@ -191,13 +219,17 @@ class EditcommentCall {
 }
 
 class DeletecommentCall {
-  static Future<ApiCallResponse> call() {
+  static Future<ApiCallResponse> call({
+    int? commentId,
+  }) {
     return ApiManager.instance.makeApiCall(
       callName: 'deletecomment',
       apiUrl: 'http://localhost:8080/api/v1/comment/delete/{commentId}',
       callType: ApiCallType.DELETE,
       headers: {},
-      params: {},
+      params: {
+        'commentId': commentId,
+      },
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,

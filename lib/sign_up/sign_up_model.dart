@@ -17,6 +17,8 @@ class SignUpModel extends FlutterFlowModel {
   TextEditingController? passwordController;
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordControllerValidator;
+  // Stores action output result for [Backend Call - API (register)] action in card_ActiveUsers widget.
+  ApiCallResponse? username;
 
   /// Initialization and disposal methods.
 

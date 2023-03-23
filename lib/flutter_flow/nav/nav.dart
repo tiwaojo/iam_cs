@@ -69,13 +69,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, _) =>
-          appStateNotifier.loggedIn ? PostsWidget() : SignInWidget(),
+          appStateNotifier.loggedIn ? CommentsWidget() : SignInWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? PostsWidget() : SignInWidget(),
+              appStateNotifier.loggedIn ? CommentsWidget() : SignInWidget(),
           routes: [
             FFRoute(
               name: 'signIn',
@@ -88,9 +88,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SignUpWidget(),
             ),
             FFRoute(
-              name: 'posts',
-              path: 'posts',
-              builder: (context, params) => PostsWidget(
+              name: 'comments',
+              path: 'comments',
+              builder: (context, params) => CommentsWidget(
                 userEmail: params.getParam('userEmail', ParamType.String),
               ),
             ),
