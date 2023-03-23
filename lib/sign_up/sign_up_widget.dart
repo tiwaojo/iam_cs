@@ -1,5 +1,4 @@
 import '/auth/auth_util.dart';
-import '/auth/firebase_user_provider.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -286,37 +285,12 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                 children: [
                                   InkWell(
                                     onTap: () async {
-                                      await RegisterCall.call();
-                                      if (loggedIn == true) {
-                                        context.goNamed(
-                                          'homePage',
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType:
-                                                  PageTransitionType.fade,
-                                            ),
-                                          },
-                                        );
-                                      } else {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                              'User not logged in',
-                                              style: TextStyle(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                            ),
-                                            duration:
-                                                Duration(milliseconds: 4000),
-                                            backgroundColor: Color(0x00000000),
-                                          ),
-                                        );
-                                        return;
-                                      }
+                                      await RegisterCall.call(
+                                        userEmail:
+                                            _model.emailAddressController.text,
+                                        userPassword:
+                                            _model.passwordController.text,
+                                      );
                                     },
                                     child: Container(
                                       width: 150.0,
@@ -426,7 +400,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                         return;
                                       }
 
-                                      context.goNamedAuth('homePage', mounted);
+                                      context.goNamedAuth('posts', mounted);
                                     },
                                     text: 'Continue as Guest',
                                     options: FFButtonOptions(

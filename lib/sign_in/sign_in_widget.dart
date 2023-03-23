@@ -309,100 +309,98 @@ class _SignInWidgetState extends State<SignInWidget> {
                                       ),
                                     ),
                                   ),
-                                  AuthUserStreamWidget(
-                                    builder: (context) =>
-                                        FutureBuilder<ApiCallResponse>(
-                                      future: RegisterCall.call(
-                                        userEmail:
-                                            currentUserEmailVerified.toString(),
-                                        userPassword:
-                                            _model.passwordController.text,
-                                      ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: CircularProgressIndicator(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryColor,
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        final cardActiveUsersRegisterResponse =
-                                            snapshot.data!;
-                                        return InkWell(
-                                          onTap: () async {
-                                            GoRouter.of(context)
-                                                .prepareAuthEvent();
-
-                                            final user = await signInWithEmail(
-                                              context,
-                                              _model
-                                                  .emailAddressController.text,
-                                              _model.passwordController.text,
-                                            );
-                                            if (user == null) {
-                                              return;
-                                            }
-
-                                            context.goNamedAuth(
-                                                'homePage', mounted);
-                                          },
-                                          child: Container(
-                                            width: 150.0,
-                                            decoration: BoxDecoration(
+                                  FutureBuilder<ApiCallResponse>(
+                                    future: LoginCall.call(
+                                      userEmail:
+                                          _model.emailAddressController.text,
+                                      userPassword:
+                                          _model.passwordController.text,
+                                    ),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: CircularProgressIndicator(
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryColor,
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  blurRadius: 0.0,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary600,
-                                                  offset: Offset(0.0, 3.0),
-                                                )
-                                              ],
-                                              borderRadius:
-                                                  BorderRadius.circular(50.0),
-                                            ),
-                                            alignment:
-                                                AlignmentDirectional(0.0, 0.0),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      20.0, 12.0, 20.0, 12.0),
-                                              child: Text(
-                                                'Sign In',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .title3
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .title3Family,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryBtnText,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .title3Family),
-                                                        ),
-                                              ),
                                             ),
                                           ),
                                         );
-                                      },
-                                    ),
+                                      }
+                                      final cardActiveUsersLoginResponse =
+                                          snapshot.data!;
+                                      return InkWell(
+                                        onTap: () async {
+                                          _model.apiResultx73 =
+                                              await LoginCall.call();
+                                          if ((_model.apiResultx73?.succeeded ??
+                                              true)) {
+                                            setState(() {
+                                              FFAppState().userEmail = (_model
+                                                          .apiResultx73
+                                                          ?.jsonBody ??
+                                                      '')
+                                                  .toString();
+                                            });
+
+                                            context.goNamed('posts');
+                                          }
+
+                                          setState(() {});
+                                        },
+                                        child: Container(
+                                          width: 150.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryColor,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                blurRadius: 0.0,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary600,
+                                                offset: Offset(0.0, 3.0),
+                                              )
+                                            ],
+                                            borderRadius:
+                                                BorderRadius.circular(50.0),
+                                          ),
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20.0, 12.0, 20.0, 12.0),
+                                            child: Text(
+                                              'Sign In',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .title3
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .title3Family,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryBtnText,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .title3Family),
+                                                      ),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ],
                               ),
@@ -480,7 +478,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                         return;
                                       }
 
-                                      context.goNamedAuth('homePage', mounted);
+                                      context.goNamedAuth('posts', mounted);
                                     },
                                     text: 'Continue as Guest',
                                     options: FFButtonOptions(

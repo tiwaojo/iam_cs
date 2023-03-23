@@ -4,18 +4,18 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'users_model.dart';
-export 'users_model.dart';
+import 'threads_model.dart';
+export 'threads_model.dart';
 
-class UsersWidget extends StatefulWidget {
-  const UsersWidget({Key? key}) : super(key: key);
+class ThreadsWidget extends StatefulWidget {
+  const ThreadsWidget({Key? key}) : super(key: key);
 
   @override
-  _UsersWidgetState createState() => _UsersWidgetState();
+  _ThreadsWidgetState createState() => _ThreadsWidgetState();
 }
 
-class _UsersWidgetState extends State<UsersWidget> {
-  late UsersModel _model;
+class _ThreadsWidgetState extends State<ThreadsWidget> {
+  late ThreadsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
@@ -23,7 +23,7 @@ class _UsersWidgetState extends State<UsersWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => UsersModel());
+    _model = createModel(context, () => ThreadsModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -57,10 +57,11 @@ class _UsersWidgetState extends State<UsersWidget> {
               wrapWithModel(
                 model: _model.sideBarNavModel,
                 updateCallback: () => setState(() {}),
+                updateOnChange: true,
                 child: SideBarNavWidget(
                   oneBG: FlutterFlowTheme.of(context).secondaryBackground,
                   oneIcon: Icon(
-                    Icons.bar_chart_rounded,
+                    Icons.post_add_rounded,
                     color: FlutterFlowTheme.of(context).primaryText,
                   ),
                   twoBG: FlutterFlowTheme.of(context).primaryBackground,
@@ -68,10 +69,14 @@ class _UsersWidgetState extends State<UsersWidget> {
                     Icons.school_outlined,
                     color: FlutterFlowTheme.of(context).primaryColor,
                   ),
-                  threeColor: FlutterFlowTheme.of(context).secondaryBackground,
                   threeIcon: Icon(
                     Icons.account_circle_outlined,
                     color: FlutterFlowTheme.of(context).primaryText,
+                  ),
+                  threeBG: Color(0x00FFFFFF),
+                  fourBG: Color(0x00FFFFFF),
+                  fourIcon: Icon(
+                    Icons.person,
                   ),
                 ),
               ),

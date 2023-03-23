@@ -109,10 +109,13 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                     Icons.school_outlined,
                     color: FlutterFlowTheme.of(context).primaryText,
                   ),
-                  threeColor: FlutterFlowTheme.of(context).primaryBackground,
                   threeIcon: Icon(
                     Icons.account_circle_outlined,
-                    color: FlutterFlowTheme.of(context).primaryColor,
+                  ),
+                  fourBG: FlutterFlowTheme.of(context).primaryBackground,
+                  threeBG: Color(0x00FFFFFF),
+                  fourIcon: Icon(
+                    Icons.person,
                   ),
                 ),
               ),

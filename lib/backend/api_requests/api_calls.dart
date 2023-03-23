@@ -49,6 +49,163 @@ class LoginCall {
   }
 }
 
+class ThreadCall {
+  static Future<ApiCallResponse> call({
+    String? thread = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'thread',
+      apiUrl: 'http://localhost:8080/api/v1/thread',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class ThreadeditCall {
+  static Future<ApiCallResponse> call({
+    int? create,
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'threadedit',
+      apiUrl: 'http://localhost:8080/api/v1/thread/edit',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class ThreadlistCall {
+  static Future<ApiCallResponse> call() {
+    return ApiManager.instance.makeApiCall(
+      callName: 'threadlist',
+      apiUrl: 'http://localhost:8080/api/v1/thread/list',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class ThreadcreateCall {
+  static Future<ApiCallResponse> call() {
+    return ApiManager.instance.makeApiCall(
+      callName: 'threadcreate',
+      apiUrl: 'localhost:8080/api/v1/thread/create',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class ThreaddeleteCall {
+  static Future<ApiCallResponse> call() {
+    return ApiManager.instance.makeApiCall(
+      callName: 'threaddelete',
+      apiUrl: 'localhost:8080/api/v1/thread/delete/{threadId}',
+      callType: ApiCallType.DELETE,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class CommentlistCall {
+  static Future<ApiCallResponse> call({
+    dynamic? commentListJson,
+    int? numItems = 0,
+  }) {
+    final commentList = _serializeJson(commentListJson);
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'commentlist',
+      apiUrl: 'http://localhost:8080/api/v1/comment/list',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class CommentcreateCall {
+  static Future<ApiCallResponse> call() {
+    return ApiManager.instance.makeApiCall(
+      callName: 'commentcreate',
+      apiUrl: 'http://localhost:8080/api/v1/comment/create',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class EditcommentCall {
+  static Future<ApiCallResponse> call() {
+    return ApiManager.instance.makeApiCall(
+      callName: 'editcomment',
+      apiUrl: 'http://localhost:8080/api/v1/comment/edit',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class DeletecommentCall {
+  static Future<ApiCallResponse> call() {
+    return ApiManager.instance.makeApiCall(
+      callName: 'deletecomment',
+      apiUrl: 'http://localhost:8080/api/v1/comment/delete/{commentId}',
+      callType: ApiCallType.DELETE,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

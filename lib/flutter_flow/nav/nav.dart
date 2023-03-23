@@ -69,13 +69,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, _) =>
-          appStateNotifier.loggedIn ? HomePageWidget() : SignInWidget(),
+          appStateNotifier.loggedIn ? PostsWidget() : SignInWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? HomePageWidget() : SignInWidget(),
+              appStateNotifier.loggedIn ? PostsWidget() : SignInWidget(),
           routes: [
             FFRoute(
               name: 'signIn',
@@ -88,25 +88,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SignUpWidget(),
             ),
             FFRoute(
-              name: 'profilePage',
-              path: 'profilePage',
-              builder: (context, params) => ProfilePageWidget(),
+              name: 'posts',
+              path: 'posts',
+              builder: (context, params) => PostsWidget(
+                userEmail: params.getParam('userEmail', ParamType.String),
+              ),
             ),
             FFRoute(
-              name: 'homePage',
-              path: 'homePage',
-              builder: (context, params) => HomePageWidget(),
+              name: 'threads',
+              path: 'threads',
+              builder: (context, params) => ThreadsWidget(),
             ),
             FFRoute(
-              name: 'users',
-              path: 'users',
-              builder: (context, params) => UsersWidget(),
-            ),
-            FFRoute(
-              name: 'Roles',
+              name: 'roles',
               path: 'roles',
               requireAuth: true,
               builder: (context, params) => RolesWidget(),
+            ),
+            FFRoute(
+              name: 'profilePage',
+              path: 'profilePage',
+              builder: (context, params) => ProfilePageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

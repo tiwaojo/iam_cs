@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'side_bar_nav_model.dart';
@@ -13,16 +14,20 @@ class SideBarNavWidget extends StatefulWidget {
     this.oneIcon,
     this.twoBG,
     this.twoIcon,
-    this.threeColor,
+    this.threeBG,
     this.threeIcon,
+    this.fourBG,
+    this.fourIcon,
   }) : super(key: key);
 
   final Color? oneBG;
   final Widget? oneIcon;
   final Color? twoBG;
   final Widget? twoIcon;
-  final Color? threeColor;
+  final Color? threeBG;
   final Widget? threeIcon;
+  final Color? fourBG;
+  final Widget? fourIcon;
 
   @override
   _SideBarNavWidgetState createState() => _SideBarNavWidgetState();
@@ -112,40 +117,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
               child: InkWell(
                 onTap: () async {
-                  context.pushNamed('homePage');
-                },
-                child: Container(
-                  width: double.infinity,
-                  height: 48.0,
-                  decoration: BoxDecoration(
-                    color: widget.oneBG,
-                    borderRadius: BorderRadius.circular(12.0),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 4.0, 4.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 12.0, 0.0),
-                          child: widget.oneIcon!,
-                        ),
-                        Text(
-                          'Posts',
-                          style: FlutterFlowTheme.of(context).bodyText1,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-              child: InkWell(
-                onTap: () async {
-                  context.pushNamed('users');
+                  context.goNamed('posts');
                 },
                 child: Container(
                   width: double.infinity,
@@ -163,7 +135,44 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 12.0, 0.0),
                           child: Icon(
-                            Icons.verified_user_sharp,
+                            Icons.post_add_rounded,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24.0,
+                          ),
+                        ),
+                        Text(
+                          'Posts',
+                          style: FlutterFlowTheme.of(context).bodyText1,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+              child: InkWell(
+                onTap: () async {
+                  context.pushNamed('threads');
+                },
+                child: Container(
+                  width: double.infinity,
+                  height: 48.0,
+                  decoration: BoxDecoration(
+                    color: widget.twoBG,
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 4.0, 4.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 12.0, 0.0),
+                          child: FaIcon(
+                            FontAwesomeIcons.meteor,
                             color: FlutterFlowTheme.of(context).primaryText,
                             size: 24.0,
                           ),
@@ -182,13 +191,13 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
               child: InkWell(
                 onTap: () async {
-                  context.pushNamed('Roles');
+                  context.pushNamed('roles');
                 },
                 child: Container(
                   width: double.infinity,
                   height: 48.0,
                   decoration: BoxDecoration(
-                    color: widget.oneBG,
+                    color: widget.threeBG,
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: Padding(
@@ -234,7 +243,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                   width: double.infinity,
                   height: 48.0,
                   decoration: BoxDecoration(
-                    color: widget.threeColor,
+                    color: widget.fourBG,
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: Padding(

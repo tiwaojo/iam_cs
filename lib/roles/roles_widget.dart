@@ -60,20 +60,24 @@ class _RolesWidgetState extends State<RolesWidget> {
                 model: _model.sideBarNavModel,
                 updateCallback: () => setState(() {}),
                 child: SideBarNavWidget(
-                  oneBG: FlutterFlowTheme.of(context).secondaryBackground,
+                  oneBG: Color(0x00FFFFFF),
                   oneIcon: Icon(
                     Icons.bar_chart_rounded,
                     color: FlutterFlowTheme.of(context).primaryText,
                   ),
-                  twoBG: FlutterFlowTheme.of(context).primaryBackground,
+                  twoBG: Color(0x00FFFFFF),
                   twoIcon: Icon(
                     Icons.school_outlined,
                     color: FlutterFlowTheme.of(context).primaryColor,
                   ),
-                  threeColor: FlutterFlowTheme.of(context).secondaryBackground,
                   threeIcon: Icon(
                     Icons.account_circle_outlined,
                     color: FlutterFlowTheme.of(context).primaryText,
+                  ),
+                  fourBG: Color(0x00FFFFFF),
+                  threeBG: FlutterFlowTheme.of(context).primaryBackground,
+                  fourIcon: Icon(
+                    Icons.person,
                   ),
                 ),
               ),

@@ -17,6 +17,7 @@ class FFAppState extends ChangeNotifier {
 
   Future initializePersistedState() async {
     prefs = await SharedPreferences.getInstance();
+    _userEmail = prefs.getString('ff_userEmail') ?? _userEmail;
   }
 
   void update(VoidCallback callback) {
@@ -30,6 +31,13 @@ class FFAppState extends ChangeNotifier {
   bool get isAdmin => _isAdmin;
   set isAdmin(bool _value) {
     _isAdmin = _value;
+  }
+
+  String _userEmail = '';
+  String get userEmail => _userEmail;
+  set userEmail(String _value) {
+    _userEmail = _value;
+    prefs.setString('ff_userEmail', _value);
   }
 }
 
