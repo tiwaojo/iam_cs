@@ -307,6 +307,8 @@ class _EditThreadWidgetState extends State<EditThreadWidget> {
                         onPressed: () async {
                           _model.threadCreateRes = await ThreadeditCall.call(
                             editThreadJson: widget.thread,
+                            userName: FFAppState().userName,
+                            password: FFAppState().password,
                           );
                           if ((_model.threadCreateRes?.succeeded ?? true)) {
                             ScaffoldMessenger.of(context).showSnackBar(
@@ -323,6 +325,7 @@ class _EditThreadWidgetState extends State<EditThreadWidget> {
                                 backgroundColor: Color(0x00000000),
                               ),
                             );
+                            Navigator.pop(context);
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(

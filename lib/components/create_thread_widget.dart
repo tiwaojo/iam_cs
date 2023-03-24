@@ -321,6 +321,7 @@ class _CreateThreadWidgetState extends State<CreateThreadWidget> {
                                 backgroundColor: Color(0x00000000),
                               ),
                             );
+                            Navigator.pop(context);
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(

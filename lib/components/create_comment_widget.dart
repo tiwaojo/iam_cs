@@ -323,6 +323,7 @@ class _CreateCommentWidgetState extends State<CreateCommentWidget> {
                                 backgroundColor: Color(0x00000000),
                               ),
                             );
+                            Navigator.pop(context);
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(

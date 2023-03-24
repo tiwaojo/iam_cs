@@ -317,13 +317,15 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                         FFAppState().userName,
                                                     password:
                                                         FFAppState().password,
+                                                    numItems:
+                                                        nextPageMarker.numItems,
                                                   ).then(
                                                       (listViewThreadlistResponse) {
                                                     final pageItems =
                                                         getJsonField(
                                                       listViewThreadlistResponse
                                                           .jsonBody,
-                                                      r'''$''',
+                                                      r'''$.threads''',
                                                     ).toList() as List;
                                                     final newNumItems =
                                                         nextPageMarker
@@ -602,7 +604,9 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                                               padding: MediaQuery.of(context).viewInsets,
                                                                               child: Container(
                                                                                 height: MediaQuery.of(context).size.height * 0.5,
-                                                                                child: EditThreadWidget(),
+                                                                                child: EditThreadWidget(
+                                                                                  thread: threadItem,
+                                                                                ),
                                                                               ),
                                                                             );
                                                                           },

@@ -321,6 +321,27 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                         });
 
                                         context.goNamed('comments');
+                                      } else {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              (_model.registerRes?.statusCode ??
+                                                      200)
+                                                  .toString(),
+                                              style: TextStyle(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 4000),
+                                            backgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryColor,
+                                          ),
+                                        );
                                       }
 
                                       setState(() {});

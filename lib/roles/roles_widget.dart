@@ -217,7 +217,8 @@ class _RolesWidgetState extends State<RolesWidget> {
                                       onRefresh: () async {
                                         setState(() =>
                                             _model.pagingController?.refresh());
-                                        await _model.waitForOnePage();
+                                        await _model.waitForOnePage(
+                                            maxWait: 4000);
                                       },
                                       child: PagedListView<ApiPagingParams,
                                           dynamic>(
