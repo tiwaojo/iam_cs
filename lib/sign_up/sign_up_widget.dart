@@ -27,7 +27,8 @@ class _SignUpWidgetState extends State<SignUpWidget> {
     super.initState();
     _model = createModel(context, () => SignUpModel());
 
-    _model.emailAddressController ??= TextEditingController();
+    _model.emailAddressController1 ??= TextEditingController();
+    _model.emailAddressController2 ??= TextEditingController();
     _model.passwordController ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -125,7 +126,85 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                           0.0, 16.0, 0.0, 0.0),
                                       child: TextFormField(
                                         controller:
-                                            _model.emailAddressController,
+                                            _model.emailAddressController1,
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                          labelText: 'Name',
+                                          labelStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyText2,
+                                          hintText: 'Enter your name here...',
+                                          hintStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyText2,
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryBackground,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(40.0),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(40.0),
+                                          ),
+                                          errorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(40.0),
+                                          ),
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(40.0),
+                                          ),
+                                          filled: true,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          contentPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 24.0, 0.0, 24.0),
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1,
+                                        validator: _model
+                                            .emailAddressController1Validator
+                                            .asValidator(context),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 16.0, 0.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 16.0, 0.0, 0.0),
+                                      child: TextFormField(
+                                        controller:
+                                            _model.emailAddressController2,
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           labelText: 'Email Address',
@@ -182,7 +261,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1,
                                         validator: _model
-                                            .emailAddressControllerValidator
+                                            .emailAddressController2Validator
                                             .asValidator(context),
                                       ),
                                     ),
@@ -205,7 +284,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                         labelText: 'Password',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyText2,
-                                        hintText: 'Enter your email here...',
+                                        hintText: 'Enter your password here...',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyText2,
                                         enabledBorder: OutlineInputBorder(
@@ -288,7 +367,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                       _model.registerRes =
                                           await RegisterCall.call(
                                         userName:
-                                            _model.emailAddressController.text,
+                                            _model.emailAddressController1.text,
                                         userPassword:
                                             _model.passwordController.text,
                                       );
