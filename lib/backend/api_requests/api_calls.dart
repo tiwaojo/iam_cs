@@ -13,6 +13,7 @@ class RegisterCall {
   static Future<ApiCallResponse> call({
     String? userName = '',
     String? userPassword = '',
+    String? name = '',
   }) {
     final body = '''
 {
@@ -23,10 +24,7 @@ class RegisterCall {
       callName: 'register',
       apiUrl: 'http://localhost:8080/api/v1/register',
       callType: ApiCallType.POST,
-      headers: {
-        'Access-Control-Allow-Origin':
-            'https://cs-project-hefavi.flutterflow.app',
-      },
+      headers: {},
       params: {},
       body: body,
       bodyType: BodyType.JSON,
@@ -52,10 +50,7 @@ class LoginCall {
       callName: 'login',
       apiUrl: 'http://localhost:8080/api/v1/login',
       callType: ApiCallType.POST,
-      headers: {
-        'Access-Control-Allow-Origin':
-            'https://cs-project-hefavi.flutterflow.app',
-      },
+      headers: {},
       params: {},
       body: body,
       bodyType: BodyType.JSON,

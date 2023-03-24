@@ -370,6 +370,8 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                             _model.emailAddressController1.text,
                                         userPassword:
                                             _model.passwordController.text,
+                                        name:
+                                            _model.emailAddressController1.text,
                                       );
                                       if ((_model.registerRes?.succeeded ??
                                           true)) {
