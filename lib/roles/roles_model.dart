@@ -18,7 +18,7 @@ class RolesModel extends FlutterFlowModel {
   // State field(s) for ListView widget.
   PagingController<ApiPagingParams, dynamic>? pagingController;
   // Stores action output result for [Backend Call - API (useredit)] action in ListView widget.
-  ApiCallResponse? userItemResCopy;
+  ApiCallResponse? userItemRes;
   // State field(s) for CheckboxListTile widget.
 
   Map<dynamic, bool> checkboxListTileValueMap = {};

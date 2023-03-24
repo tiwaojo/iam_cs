@@ -307,13 +307,10 @@ class UsereditCall {
 
 class UserlistCall {
   static Future<ApiCallResponse> call({
-    dynamic? userListJson,
     int? numItems = 0,
     String? userName = '',
     String? password = '',
   }) {
-    final userList = _serializeJson(userListJson);
-
     return ApiManager.instance.makeApiCall(
       callName: 'userlist',
       apiUrl: 'localhost:8080/api/v1/user/list',

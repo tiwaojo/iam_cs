@@ -430,7 +430,7 @@ class _RolesWidgetState extends State<RolesWidget> {
                                                             ).toList();
                                                             return InkWell(
                                                               onTap: () async {
-                                                                _model.userItemResCopy =
+                                                                _model.userItemRes =
                                                                     await UsereditCall
                                                                         .call(
                                                                   userJson:
@@ -442,8 +442,10 @@ class _RolesWidgetState extends State<RolesWidget> {
                                                                       FFAppState()
                                                                           .password,
                                                                 );
-                                                                if (listViewUserlistResponse
-                                                                    .succeeded) {
+                                                                if ((_model
+                                                                        .userItemRes
+                                                                        ?.succeeded ??
+                                                                    true)) {
                                                                   ScaffoldMessenger.of(
                                                                           context)
                                                                       .showSnackBar(
