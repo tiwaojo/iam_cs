@@ -40,13 +40,19 @@ class LoginCall {
     String? userEmail = '',
     String? userPassword = '',
   }) {
+    final body = '''
+{
+  "username": "${userEmail}",
+  "password": "${userPassword}"
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'login',
       apiUrl: 'http://localhost:8080/api/v1/login',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
-      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      body: body,
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
