@@ -24,7 +24,10 @@ class RegisterCall {
       callName: 'register',
       apiUrl: 'http://localhost:8080/api/v1/register',
       callType: ApiCallType.POST,
-      headers: {},
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept-Encoding': 'base64',
+      },
       params: {},
       body: body,
       bodyType: BodyType.JSON,
@@ -50,7 +53,10 @@ class LoginCall {
       callName: 'login',
       apiUrl: 'http://localhost:8080/api/v1/login',
       callType: ApiCallType.POST,
-      headers: {},
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept-Encoding': 'base64',
+      },
       params: {},
       body: body,
       bodyType: BodyType.JSON,

@@ -267,13 +267,14 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                   (nextPageMarker) {
                                             CommentlistCall.call(
                                               numItems: nextPageMarker.numItems,
+                                              userName: FFAppState().userName,
+                                              password: FFAppState().password,
                                             ).then(
                                                 (listViewCommentlistResponse) {
-                                              final pageItems = getJsonField(
-                                                listViewCommentlistResponse
-                                                    .jsonBody,
-                                                r'''$''',
-                                              ).toList() as List;
+                                              final pageItems =
+                                                  listViewCommentlistResponse
+                                                      .jsonBody
+                                                      .toList() as List;
                                               final newNumItems =
                                                   nextPageMarker.numItems +
                                                       pageItems.length;
@@ -441,7 +442,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                           child: Text(
                                                             getJsonField(
                                                               commentsItem,
-                                                              r'''$.commentTitle''',
+                                                              r'''$..commentTitle''',
                                                             ).toString(),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -456,7 +457,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                           child: Text(
                                                             getJsonField(
                                                               commentsItem,
-                                                              r'''$.dateCreated''',
+                                                              r'''$..dateCreated''',
                                                             ).toString(),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
