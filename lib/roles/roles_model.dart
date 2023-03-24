@@ -28,9 +28,6 @@ class RolesModel extends FlutterFlowModel {
           .map((e) => e.key)
           .toList();
 
-  // Stores action output result for [Backend Call - API (useredit)] action in CheckboxListTile widget.
-  ApiCallResponse? userItemRes;
-
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {

@@ -450,9 +450,11 @@ class _RolesWidgetState extends State<RolesWidget> {
                                                                     SnackBar(
                                                                       content:
                                                                           Text(
-                                                                        (_model.userItemRes?.statusCode ??
-                                                                                200)
-                                                                            .toString(),
+                                                                        getJsonField(
+                                                                          listViewUserlistResponse
+                                                                              .jsonBody,
+                                                                          r'''$''',
+                                                                        ).toString(),
                                                                         style:
                                                                             TextStyle(
                                                                           color:
@@ -474,9 +476,11 @@ class _RolesWidgetState extends State<RolesWidget> {
                                                                     SnackBar(
                                                                       content:
                                                                           Text(
-                                                                        (_model.userItemRes?.statusCode ??
-                                                                                200)
-                                                                            .toString(),
+                                                                        getJsonField(
+                                                                          listViewUserlistResponse
+                                                                              .jsonBody,
+                                                                          r'''$''',
+                                                                        ).toString(),
                                                                         style:
                                                                             TextStyle(
                                                                           color:
@@ -529,48 +533,6 @@ class _RolesWidgetState extends State<RolesWidget> {
                                                                         setState(() =>
                                                                             _model.checkboxListTileValueMap[rolesItem] =
                                                                                 newValue!);
-                                                                        if (newValue!) {
-                                                                          _model.userItemRes =
-                                                                              await UsereditCall.call(
-                                                                            userJson:
-                                                                                usersItem,
-                                                                            userName:
-                                                                                FFAppState().userName,
-                                                                            password:
-                                                                                FFAppState().password,
-                                                                          );
-                                                                          if (listViewUserlistResponse
-                                                                              .succeeded) {
-                                                                            ScaffoldMessenger.of(context).showSnackBar(
-                                                                              SnackBar(
-                                                                                content: Text(
-                                                                                  (_model.userItemRes?.statusCode ?? 200).toString(),
-                                                                                  style: TextStyle(
-                                                                                    color: FlutterFlowTheme.of(context).primaryText,
-                                                                                  ),
-                                                                                ),
-                                                                                duration: Duration(milliseconds: 4000),
-                                                                                backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
-                                                                              ),
-                                                                            );
-                                                                          } else {
-                                                                            ScaffoldMessenger.of(context).showSnackBar(
-                                                                              SnackBar(
-                                                                                content: Text(
-                                                                                  (_model.userItemRes?.statusCode ?? 200).toString(),
-                                                                                  style: TextStyle(
-                                                                                    color: FlutterFlowTheme.of(context).primaryText,
-                                                                                  ),
-                                                                                ),
-                                                                                duration: Duration(milliseconds: 4000),
-                                                                                backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
-                                                                              ),
-                                                                            );
-                                                                          }
-
-                                                                          setState(
-                                                                              () {});
-                                                                        }
                                                                       },
                                                                       title:
                                                                           Text(
