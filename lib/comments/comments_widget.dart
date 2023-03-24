@@ -272,7 +272,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                               final pageItems = getJsonField(
                                                 listViewCommentlistResponse
                                                     .jsonBody,
-                                                r'''$.comments''',
+                                                r'''$''',
                                               ).toList() as List;
                                               final newNumItems =
                                                   nextPageMarker.numItems +
@@ -298,6 +298,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                         }(),
                                         padding: EdgeInsets.zero,
                                         shrinkWrap: true,
+                                        reverse: false,
                                         scrollDirection: Axis.vertical,
                                         builderDelegate:
                                             PagedChildBuilderDelegate<dynamic>(
@@ -535,6 +536,9 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                                     backgroundColor:
                                                                         Colors
                                                                             .transparent,
+                                                                    barrierColor:
+                                                                        Color(
+                                                                            0x00000000),
                                                                     isDismissible:
                                                                         false,
                                                                     context:
@@ -733,6 +737,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                 await showModalBottomSheet(
                                   isScrollControlled: true,
                                   backgroundColor: Colors.transparent,
+                                  barrierColor: Color(0x00000000),
                                   isDismissible: false,
                                   context: context,
                                   builder: (context) {

@@ -149,7 +149,7 @@ class _EditCommentWidgetState extends State<EditCommentWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                         child: Text(
-                          FFAppState().userEmail,
+                          FFAppState().userName,
                           style: FlutterFlowTheme.of(context)
                               .subtitle2
                               .override(
@@ -312,7 +312,7 @@ class _EditCommentWidgetState extends State<EditCommentWidget> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  'Post Created!',
+                                  (_model.commentEditRes?.bodyText ?? ''),
                                   style: TextStyle(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
@@ -326,7 +326,8 @@ class _EditCommentWidgetState extends State<EditCommentWidget> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  'Post failed. Try again',
+                                  (_model.commentEditRes?.statusCode ?? 200)
+                                      .toString(),
                                   style: TextStyle(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,

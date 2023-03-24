@@ -149,7 +149,7 @@ class _EditThreadWidgetState extends State<EditThreadWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                         child: Text(
-                          FFAppState().userEmail,
+                          FFAppState().userName,
                           style: FlutterFlowTheme.of(context)
                               .subtitle2
                               .override(
@@ -312,7 +312,8 @@ class _EditThreadWidgetState extends State<EditThreadWidget> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  'Thread Created Successfully',
+                                  (_model.threadCreateRes?.jsonBody ?? '')
+                                      .toString(),
                                   style: TextStyle(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
@@ -326,7 +327,8 @@ class _EditThreadWidgetState extends State<EditThreadWidget> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  'Thread creation failed. Please try again later.',
+                                  (_model.threadCreateRes?.statusCode ?? 200)
+                                      .toString(),
                                   style: TextStyle(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,

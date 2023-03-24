@@ -335,19 +335,66 @@ class _SignInWidgetState extends State<SignInWidget> {
                                           snapshot.data!;
                                       return InkWell(
                                         onTap: () async {
-                                          _model.apiResultx73 =
-                                              await LoginCall.call();
-                                          if ((_model.apiResultx73?.succeeded ??
+                                          _model.loginRes =
+                                              await LoginCall.call(
+                                            userEmail: _model
+                                                .emailAddressController.text,
+                                            userPassword:
+                                                _model.passwordController.text,
+                                          );
+                                          if ((_model.loginRes?.succeeded ??
                                               true)) {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  (_model.loginRes?.jsonBody ??
+                                                          '')
+                                                      .toString(),
+                                                  style: TextStyle(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                  ),
+                                                ),
+                                                duration: Duration(
+                                                    milliseconds: 4000),
+                                                backgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryColor,
+                                              ),
+                                            );
                                             setState(() {
-                                              FFAppState().userEmail = (_model
-                                                          .apiResultx73
-                                                          ?.jsonBody ??
-                                                      '')
-                                                  .toString();
+                                              FFAppState().userName = _model
+                                                  .emailAddressController.text;
+                                              FFAppState().password = _model
+                                                  .passwordController.text;
                                             });
 
                                             context.goNamed('comments');
+                                          } else {
+                                            ScaffoldMessenger.of(context)
+                                                .clearSnackBars();
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  cardActiveUsersLoginResponse
+                                                      .statusCode
+                                                      .toString(),
+                                                  style: TextStyle(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                  ),
+                                                ),
+                                                duration: Duration(
+                                                    milliseconds: 4000),
+                                                backgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryColor,
+                                              ),
+                                            );
                                           }
 
                                           setState(() {});

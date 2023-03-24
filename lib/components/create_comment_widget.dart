@@ -144,7 +144,7 @@ class _CreateCommentWidgetState extends State<CreateCommentWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                         child: Text(
-                          FFAppState().userEmail,
+                          FFAppState().userName,
                           style: FlutterFlowTheme.of(context)
                               .subtitle2
                               .override(
@@ -313,7 +313,7 @@ class _CreateCommentWidgetState extends State<CreateCommentWidget> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  'Post Created!',
+                                  (_model.commentCreateRes?.bodyText ?? ''),
                                   style: TextStyle(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
@@ -327,7 +327,8 @@ class _CreateCommentWidgetState extends State<CreateCommentWidget> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  'Post failed. Try again',
+                                  (_model.commentCreateRes?.statusCode ?? 200)
+                                      .toString(),
                                   style: TextStyle(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,

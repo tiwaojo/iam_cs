@@ -312,16 +312,18 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                 _model.pagingController!
                                                     .addPageRequestListener(
                                                         (nextPageMarker) {
-                                                  CommentlistCall.call(
-                                                    numItems:
-                                                        nextPageMarker.numItems,
+                                                  ThreadlistCall.call(
+                                                    userName:
+                                                        FFAppState().userName,
+                                                    password:
+                                                        FFAppState().password,
                                                   ).then(
-                                                      (listViewCommentlistResponse) {
+                                                      (listViewThreadlistResponse) {
                                                     final pageItems =
                                                         getJsonField(
-                                                      listViewCommentlistResponse
+                                                      listViewThreadlistResponse
                                                           .jsonBody,
-                                                      r'''$.comments''',
+                                                      r'''$''',
                                                     ).toList() as List;
                                                     final newNumItems =
                                                         nextPageMarker
@@ -339,7 +341,7 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                               numItems:
                                                                   newNumItems,
                                                               lastResponse:
-                                                                  listViewCommentlistResponse,
+                                                                  listViewThreadlistResponse,
                                                             )
                                                           : null,
                                                     );
@@ -349,6 +351,7 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                               }(),
                                               padding: EdgeInsets.zero,
                                               shrinkWrap: true,
+                                              reverse: false,
                                               scrollDirection: Axis.vertical,
                                               builderDelegate:
                                                   PagedChildBuilderDelegate<
@@ -369,11 +372,11 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                   ),
                                                 ),
 
-                                                itemBuilder: (context, _,
-                                                    commentsIndex) {
-                                                  final commentsItem = _model
+                                                itemBuilder:
+                                                    (context, _, threadIndex) {
+                                                  final threadItem = _model
                                                       .pagingController!
-                                                      .itemList![commentsIndex];
+                                                      .itemList![threadIndex];
                                                   return Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
@@ -450,7 +453,7 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                                     children: [
                                                                       AutoSizeText(
                                                                         FFAppState()
-                                                                            .userEmail
+                                                                            .userName
                                                                             .maybeHandleOverflow(
                                                                               maxChars: 32,
                                                                               replacement: '…',
@@ -493,7 +496,7 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                                 flex: 2,
                                                                 child: Text(
                                                                   getJsonField(
-                                                                    commentsItem,
+                                                                    threadItem,
                                                                     r'''$.threadName''',
                                                                   ).toString(),
                                                                   style: FlutterFlowTheme.of(
@@ -508,7 +511,7 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                               Expanded(
                                                                 child: Text(
                                                                   getJsonField(
-                                                                    commentsItem,
+                                                                    threadItem,
                                                                     r'''$.dateCreated''',
                                                                   ).toString(),
                                                                   style: FlutterFlowTheme.of(
@@ -524,7 +527,7 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                               Expanded(
                                                                 child: Text(
                                                                   getJsonField(
-                                                                    commentsItem,
+                                                                    threadItem,
                                                                     r'''$.threadDescription''',
                                                                   ).toString(),
                                                                   style: FlutterFlowTheme.of(
@@ -587,6 +590,8 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                                               true,
                                                                           backgroundColor:
                                                                               Colors.transparent,
+                                                                          barrierColor:
+                                                                              Color(0x00000000),
                                                                           isDismissible:
                                                                               false,
                                                                           context:
@@ -649,7 +654,7 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                                             await ThreaddeleteCall.call(
                                                                           threadId:
                                                                               getJsonField(
-                                                                            commentsItem,
+                                                                            threadItem,
                                                                             r'''$.threadId''',
                                                                           ),
                                                                         );
@@ -752,6 +757,7 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                       await showModalBottomSheet(
                                         isScrollControlled: true,
                                         backgroundColor: Colors.transparent,
+                                        barrierColor: Color(0x00000000),
                                         enableDrag: false,
                                         context: context,
                                         builder: (context) {

@@ -285,12 +285,43 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                 children: [
                                   InkWell(
                                     onTap: () async {
-                                      _model.username = await RegisterCall.call(
+                                      _model.registerRes =
+                                          await RegisterCall.call(
                                         userName:
                                             _model.emailAddressController.text,
                                         userPassword:
                                             _model.passwordController.text,
                                       );
+                                      if ((_model.registerRes?.succeeded ??
+                                          true)) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              (_model.registerRes?.bodyText ??
+                                                  ''),
+                                              style: TextStyle(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 4000),
+                                            backgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryColor,
+                                          ),
+                                        );
+                                        setState(() {
+                                          FFAppState().userName =
+                                              FFAppState().userName;
+                                          FFAppState().password =
+                                              FFAppState().password;
+                                        });
+
+                                        context.goNamed('comments');
+                                      }
 
                                       setState(() {});
                                     },
