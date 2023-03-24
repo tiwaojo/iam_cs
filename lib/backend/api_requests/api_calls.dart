@@ -22,12 +22,10 @@ class RegisterCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'register',
-      apiUrl: 'http://localhost:8080/api/v1/register',
+      apiUrl:
+          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/register',
       callType: ApiCallType.POST,
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept-Encoding': 'base64',
-      },
+      headers: {},
       params: {},
       body: body,
       bodyType: BodyType.JSON,
@@ -51,12 +49,10 @@ class LoginCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'login',
-      apiUrl: 'http://localhost:8080/api/v1/login',
+      apiUrl:
+          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/login',
       callType: ApiCallType.POST,
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept-Encoding': 'base64',
-      },
+      headers: {},
       params: {},
       body: body,
       bodyType: BodyType.JSON,
@@ -76,7 +72,8 @@ class ThreadCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'thread',
-      apiUrl: 'http://localhost:8080/api/v1/thread',
+      apiUrl:
+          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/thread',
       callType: ApiCallType.GET,
       headers: {
         'username': '${userName}',
@@ -101,12 +98,10 @@ class ThreadeditCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'threadedit',
-      apiUrl: 'http://localhost:8080/api/v1/thread/edit',
+      apiUrl:
+          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/thread/edit',
       callType: ApiCallType.POST,
-      headers: {
-        'password': '${password}',
-        'username': '${userName}',
-      },
+      headers: {},
       params: {},
       bodyType: BodyType.JSON,
       returnBody: true,
@@ -125,12 +120,10 @@ class ThreadlistCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'threadlist',
-      apiUrl: 'http://localhost:8080/api/v1/thread/list',
+      apiUrl:
+          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/thread/list',
       callType: ApiCallType.GET,
-      headers: {
-        'password': '${password}',
-        'username': '${userName}',
-      },
+      headers: {},
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
@@ -150,12 +143,10 @@ class ThreadcreateCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'threadcreate',
-      apiUrl: 'localhost:8080/api/v1/thread/create',
+      apiUrl:
+          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/thread/create',
       callType: ApiCallType.POST,
-      headers: {
-        'username': '${userName}',
-        'password': '${password}',
-      },
+      headers: {},
       params: {},
       bodyType: BodyType.JSON,
       returnBody: true,
@@ -174,12 +165,10 @@ class ThreaddeleteCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'threaddelete',
-      apiUrl: 'localhost:8080/api/v1/thread/delete/{threadId}',
+      apiUrl:
+          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/thread/delete/{threadId}',
       callType: ApiCallType.DELETE,
-      headers: {
-        'username': '${userName}',
-        'password': '${password}',
-      },
+      headers: {},
       params: {
         'threadId': threadId,
       },
@@ -202,12 +191,10 @@ class CommentlistCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'commentlist',
-      apiUrl: 'http://localhost:8080/api/v1/comment/list',
+      apiUrl:
+          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/comment/list',
       callType: ApiCallType.GET,
-      headers: {
-        'username': '${userName}',
-        'password': '${password}',
-      },
+      headers: {},
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
@@ -227,12 +214,10 @@ class CommentcreateCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'commentcreate',
-      apiUrl: 'http://localhost:8080/api/v1/comment/create',
+      apiUrl:
+          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/comment/create',
       callType: ApiCallType.POST,
-      headers: {
-        'username': '${userName}',
-        'password': '${password}',
-      },
+      headers: {},
       params: {},
       bodyType: BodyType.JSON,
       returnBody: true,
@@ -254,7 +239,8 @@ class EditcommentCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'editcomment',
-      apiUrl: 'http://localhost:8080/api/v1/comment/edit',
+      apiUrl:
+          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/comment/edit',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -276,12 +262,10 @@ class DeletecommentCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'deletecomment',
-      apiUrl: 'http://localhost:8080/api/v1/comment/delete/{commentId}',
+      apiUrl:
+          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/comment/delete/{commentId}',
       callType: ApiCallType.DELETE,
-      headers: {
-        'username': '${userName}',
-        'password': '${password}',
-      },
+      headers: {},
       params: {
         'commentId': commentId,
       },
@@ -303,7 +287,8 @@ class UsereditCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'useredit',
-      apiUrl: 'http://localhost:8080/api/v1/user/edit',
+      apiUrl:
+          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/user/edit',
       callType: ApiCallType.POST,
       headers: {
         'username': '${userName}',
@@ -327,7 +312,8 @@ class UserlistCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'userlist',
-      apiUrl: 'localhost:8080/api/v1/user/list',
+      apiUrl:
+          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/user/list',
       callType: ApiCallType.GET,
       headers: {
         'username': '${userName}',
