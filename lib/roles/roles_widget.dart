@@ -453,11 +453,9 @@ class _RolesWidgetState extends State<RolesWidget> {
                                                                     SnackBar(
                                                                       content:
                                                                           Text(
-                                                                        getJsonField(
-                                                                          listViewUserlistResponse
-                                                                              .jsonBody,
-                                                                          r'''$''',
-                                                                        ).toString(),
+                                                                        (_model.userItemRes?.jsonBody ??
+                                                                                '')
+                                                                            .toString(),
                                                                         style:
                                                                             TextStyle(
                                                                           color:
@@ -479,11 +477,9 @@ class _RolesWidgetState extends State<RolesWidget> {
                                                                     SnackBar(
                                                                       content:
                                                                           Text(
-                                                                        getJsonField(
-                                                                          listViewUserlistResponse
-                                                                              .jsonBody,
-                                                                          r'''$''',
-                                                                        ).toString(),
+                                                                        (_model.userItemRes?.statusCode ??
+                                                                                200)
+                                                                            .toString(),
                                                                         style:
                                                                             TextStyle(
                                                                           color:
