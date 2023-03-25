@@ -90,9 +90,19 @@ class ThreadeditCall {
     dynamic? editThreadJson,
     String? userName = '',
     String? password = '',
+    int? threadId,
+    String? threadName = '',
+    String? threadDescription = '',
+    String? dateCreated = '',
   }) {
     final editThread = _serializeJson(editThreadJson);
-
+    final body = '''
+{
+  "threadId": "${threadId}",
+  "threadName": "${threadName}",
+  "threadDescription": "${threadDescription}",
+  "dateCreated": "${dateCreated}"
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'threadedit',
       apiUrl: 'http://localhost:8080/api/v1/thread/edit',
@@ -102,6 +112,7 @@ class ThreadeditCall {
         'password': '${password}',
       },
       params: {},
+      body: body,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
@@ -142,6 +153,12 @@ class ThreadcreateCall {
     String? userName = '',
     String? password = '',
   }) {
+    final body = '''
+{
+  "threadName": "${threadName}",
+  "threadDescription": "${threadDescription}",
+  "dateCreated": "${dateCreated}"
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'threadcreate',
       apiUrl: 'http://localhost:8080/api/v1/thread/create',
@@ -151,6 +168,7 @@ class ThreadcreateCall {
         'password': '${password}',
       },
       params: {},
+      body: body,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
@@ -219,6 +237,12 @@ class CommentcreateCall {
     String? userName = '',
     String? password = '',
   }) {
+    final body = '''
+{
+  "commentTitle": "${commentTitle}",
+  "commentContent": "${commentContent}",
+  "dateCreated": "${dateCreated}"
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'commentcreate',
       apiUrl: 'http://localhost:8080/api/v1/comment/create',
@@ -228,6 +252,7 @@ class CommentcreateCall {
         'password': '${password}',
       },
       params: {},
+      body: body,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
@@ -242,11 +267,20 @@ class EditcommentCall {
     dynamic? editCommentJson,
     String? password = '',
     String? userName = '',
+    int? threadId,
+    int? commentId,
+    String? commentTitle = '',
+    String? commentContent = '',
+    String? dateCreated = '',
   }) {
     final editComment = _serializeJson(editCommentJson);
     final body = '''
 {
-  "comment": ${editComment}
+  "threadId": ${threadId},
+  "commentId": ${commentId},
+  "commentTitle": "${commentTitle}",
+  "commentContent": "${commentContent}",
+  "dateCreated": "${dateCreated}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'editcomment',

@@ -338,7 +338,8 @@ class _CreateCommentWidgetState extends State<CreateCommentWidget> {
                                   ),
                                 ),
                                 duration: Duration(milliseconds: 4000),
-                                backgroundColor: Color(0x00000000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).primary600,
                               ),
                             );
                           }

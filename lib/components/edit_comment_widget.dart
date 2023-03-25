@@ -309,6 +309,24 @@ class _EditCommentWidgetState extends State<EditCommentWidget> {
                             editCommentJson: widget.comment,
                             userName: FFAppState().userName,
                             password: FFAppState().password,
+                            dateCreated:
+                                dateTimeFormat('yMMMd', getCurrentTimestamp),
+                            threadId: getJsonField(
+                              widget.comment,
+                              r'''$.threadId''',
+                            ),
+                            commentId: getJsonField(
+                              widget.comment,
+                              r'''$.commentId''',
+                            ),
+                            commentTitle: getJsonField(
+                              widget.comment,
+                              r'''$.commentTitle''',
+                            ).toString(),
+                            commentContent: getJsonField(
+                              widget.comment,
+                              r'''$.commentContent''',
+                            ).toString(),
                           );
                           if ((_model.commentEditRes?.succeeded ?? true)) {
                             ScaffoldMessenger.of(context).showSnackBar(
@@ -337,7 +355,8 @@ class _EditCommentWidgetState extends State<EditCommentWidget> {
                                   ),
                                 ),
                                 duration: Duration(milliseconds: 4000),
-                                backgroundColor: Color(0x00000000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).primary600,
                               ),
                             );
                           }

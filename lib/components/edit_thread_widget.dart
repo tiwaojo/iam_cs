@@ -309,6 +309,20 @@ class _EditThreadWidgetState extends State<EditThreadWidget> {
                             editThreadJson: widget.thread,
                             userName: FFAppState().userName,
                             password: FFAppState().password,
+                            threadId: getJsonField(
+                              widget.thread,
+                              r'''$.threadId''',
+                            ),
+                            threadName: getJsonField(
+                              widget.thread,
+                              r'''$.threadName''',
+                            ).toString(),
+                            threadDescription: getJsonField(
+                              widget.thread,
+                              r'''$.threadDescription''',
+                            ).toString(),
+                            dateCreated:
+                                dateTimeFormat('yMMMd', getCurrentTimestamp),
                           );
                           if ((_model.threadCreateRes?.succeeded ?? true)) {
                             ScaffoldMessenger.of(context).showSnackBar(
@@ -338,7 +352,8 @@ class _EditThreadWidgetState extends State<EditThreadWidget> {
                                   ),
                                 ),
                                 duration: Duration(milliseconds: 4000),
-                                backgroundColor: Color(0x00000000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).primary600,
                               ),
                             );
                           }
