@@ -303,9 +303,6 @@ class _CreateThreadWidgetState extends State<CreateThreadWidget> {
                           _model.threadCreateRes = await ThreadcreateCall.call(
                             threadName: _model.shortBioController1.text,
                             threadDescription: _model.shortBioController2.text,
-                            dateCreated: dateTimeFromSecondsSinceEpoch(
-                                    getCurrentTimestamp.secondsSinceEpoch)
-                                .toString(),
                             userName: FFAppState().userName,
                             password: FFAppState().password,
                           );
