@@ -309,8 +309,6 @@ class _EditCommentWidgetState extends State<EditCommentWidget> {
                             editCommentJson: widget.comment,
                             userName: FFAppState().userName,
                             password: FFAppState().password,
-                            dateCreated:
-                                dateTimeFormat('yMMMd', getCurrentTimestamp),
                             threadId: getJsonField(
                               widget.comment,
                               r'''$.threadId''',

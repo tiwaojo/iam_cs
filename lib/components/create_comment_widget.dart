@@ -304,9 +304,6 @@ class _CreateCommentWidgetState extends State<CreateCommentWidget> {
                               await CommentcreateCall.call(
                             commentTitle: _model.shortBioController1.text,
                             commentContent: _model.shortBioController2.text,
-                            dateCreated: dateTimeFromSecondsSinceEpoch(
-                                    getCurrentTimestamp.secondsSinceEpoch)
-                                .toString(),
                             userName: FFAppState().userName,
                             password: FFAppState().password,
                           );

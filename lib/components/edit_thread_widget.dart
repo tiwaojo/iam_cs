@@ -321,8 +321,6 @@ class _EditThreadWidgetState extends State<EditThreadWidget> {
                               widget.thread,
                               r'''$.threadDescription''',
                             ).toString(),
-                            dateCreated:
-                                dateTimeFormat('yMMMd', getCurrentTimestamp),
                           );
                           if ((_model.threadCreateRes?.succeeded ?? true)) {
                             ScaffoldMessenger.of(context).showSnackBar(
