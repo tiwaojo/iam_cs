@@ -78,14 +78,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? CommentsWidget() : SignInWidget(),
           routes: [
             FFRoute(
-              name: 'signIn',
-              path: 'signIn',
-              builder: (context, params) => SignInWidget(),
-            ),
-            FFRoute(
               name: 'signUp',
               path: 'signUp',
               builder: (context, params) => SignUpWidget(),
+            ),
+            FFRoute(
+              name: 'signIn',
+              path: 'signIn',
+              builder: (context, params) => SignInWidget(),
             ),
             FFRoute(
               name: 'comments',

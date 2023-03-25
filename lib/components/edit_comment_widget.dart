@@ -307,6 +307,8 @@ class _EditCommentWidgetState extends State<EditCommentWidget> {
                         onPressed: () async {
                           _model.commentEditRes = await EditcommentCall.call(
                             editCommentJson: widget.comment,
+                            userName: FFAppState().userName,
+                            password: FFAppState().password,
                           );
                           if ((_model.commentEditRes?.succeeded ?? true)) {
                             ScaffoldMessenger.of(context).showSnackBar(
