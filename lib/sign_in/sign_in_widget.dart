@@ -206,8 +206,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                         labelText: 'Password',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyText2,
-                                        hintText:
-                                            'Enter your password  here...',
+                                        hintText: 'Enter your password here...',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyText2,
                                         enabledBorder: OutlineInputBorder(
