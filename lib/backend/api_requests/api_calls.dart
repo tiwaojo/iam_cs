@@ -126,7 +126,7 @@ class ThreadlistCall {
   static Future<ApiCallResponse> call({
     String? password = '',
     String? userName = '',
-    int? numItems,
+    int? numItems = 0,
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'threadlist',
