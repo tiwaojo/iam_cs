@@ -22,8 +22,7 @@ class RegisterCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'register',
-      apiUrl:
-          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/register',
+      apiUrl: 'http://localhost:8080/api/v1/register',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -49,8 +48,7 @@ class LoginCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'login',
-      apiUrl:
-          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/login',
+      apiUrl: 'http://localhost:8080/api/v1/login',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -72,8 +70,7 @@ class ThreadCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'thread',
-      apiUrl:
-          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/thread',
+      apiUrl: 'http://localhost:8080/api/v1/thread',
       callType: ApiCallType.GET,
       headers: {
         'username': '${userName}',
@@ -98,8 +95,7 @@ class ThreadeditCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'threadedit',
-      apiUrl:
-          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/thread/edit',
+      apiUrl: 'http://localhost:8080/api/v1/thread/edit',
       callType: ApiCallType.POST,
       headers: {
         'username': '${userName}',
@@ -123,8 +119,7 @@ class ThreadlistCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'threadlist',
-      apiUrl:
-          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/thread/list',
+      apiUrl: 'http://localhost:8080/api/v1/thread/list',
       callType: ApiCallType.GET,
       headers: {
         'username': '${userName}',
@@ -149,8 +144,7 @@ class ThreadcreateCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'threadcreate',
-      apiUrl:
-          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/thread/create',
+      apiUrl: 'http://localhost:8080/api/v1/thread/create',
       callType: ApiCallType.POST,
       headers: {
         'username': '${userName}',
@@ -174,8 +168,7 @@ class ThreaddeleteCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'threaddelete',
-      apiUrl:
-          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/thread/delete/{threadId}',
+      apiUrl: '/http://localhost:8080/api/v1/thread/delete/{threadId}',
       callType: ApiCallType.DELETE,
       headers: {
         'username': '${userName}',
@@ -203,8 +196,7 @@ class CommentlistCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'commentlist',
-      apiUrl:
-          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/comment/list',
+      apiUrl: 'http://localhost:8080/api/v1/comment/list',
       callType: ApiCallType.GET,
       headers: {
         'username': '${userName}',
@@ -229,8 +221,7 @@ class CommentcreateCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'commentcreate',
-      apiUrl:
-          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/comment/create',
+      apiUrl: 'http://localhost:8080/api/v1/comment/create',
       callType: ApiCallType.POST,
       headers: {
         'username': '${userName}',
