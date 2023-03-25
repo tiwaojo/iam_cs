@@ -64,7 +64,7 @@ class LoginCall {
 
 class ThreadCall {
   static Future<ApiCallResponse> call({
-    String? thread = '',
+    String? threadId = '',
     String? userName = '',
     String? password = '',
   }) {
@@ -236,12 +236,13 @@ class CommentcreateCall {
     String? dateCreated = '',
     String? userName = '',
     String? password = '',
+    int? threadId,
   }) {
     final body = '''
 {
   "commentTitle": "${commentTitle}",
   "commentContent": "${commentContent}",
-  "dateCreated": "${dateCreated}"
+  "threadId": ${threadId}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'commentcreate',

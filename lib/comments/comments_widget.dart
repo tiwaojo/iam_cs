@@ -531,6 +531,108 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                               FFButtonWidget(
                                                                 onPressed:
                                                                     () async {
+                                                                  _model.getThreadRes =
+                                                                      await ThreadCall
+                                                                          .call(
+                                                                    threadId:
+                                                                        getJsonField(
+                                                                      commentsItem,
+                                                                      r'''$..threadId''',
+                                                                    ).toString(),
+                                                                    userName:
+                                                                        FFAppState()
+                                                                            .userName,
+                                                                    password:
+                                                                        FFAppState()
+                                                                            .password,
+                                                                  );
+                                                                  await showModalBottomSheet(
+                                                                    isScrollControlled:
+                                                                        true,
+                                                                    backgroundColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    barrierColor:
+                                                                        Color(
+                                                                            0x00000000),
+                                                                    isDismissible:
+                                                                        false,
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (context) {
+                                                                      return Padding(
+                                                                        padding:
+                                                                            MediaQuery.of(context).viewInsets,
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              MediaQuery.of(context).size.height * 0.5,
+                                                                          child:
+                                                                              CreateCommentWidget(
+                                                                            threadID:
+                                                                                getJsonField(
+                                                                              (_model.getThreadRes?.jsonBody ?? ''),
+                                                                              r'''$..threadId''',
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    },
+                                                                  ).then((value) =>
+                                                                      setState(
+                                                                          () {}));
+
+                                                                  setState(
+                                                                      () {});
+                                                                },
+                                                                text:
+                                                                    'Create Comment',
+                                                                options:
+                                                                    FFButtonOptions(
+                                                                  width: 90.0,
+                                                                  height: 30.0,
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  iconPadding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryColor,
+                                                                  textStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .subtitle2
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).subtitle2Family,
+                                                                        color: Colors
+                                                                            .white,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).subtitle2Family),
+                                                                      ),
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                    color: Colors
+                                                                        .transparent,
+                                                                    width: 1.0,
+                                                                  ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              8.0),
+                                                                ),
+                                                              ),
+                                                              FFButtonWidget(
+                                                                onPressed:
+                                                                    () async {
                                                                   await showModalBottomSheet(
                                                                     isScrollControlled:
                                                                         true,
@@ -584,7 +686,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                                           0.0),
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryColor,
+                                                                      .white70,
                                                                   textStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .subtitle2
@@ -729,61 +831,6 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                               ),
                             ),
                           ),
-                        ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            FFButtonWidget(
-                              onPressed: () async {
-                                await showModalBottomSheet(
-                                  isScrollControlled: true,
-                                  backgroundColor: Colors.transparent,
-                                  barrierColor: Color(0x00000000),
-                                  isDismissible: false,
-                                  context: context,
-                                  builder: (context) {
-                                    return Padding(
-                                      padding:
-                                          MediaQuery.of(context).viewInsets,
-                                      child: Container(
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                0.5,
-                                        child: CreateCommentWidget(),
-                                      ),
-                                    );
-                                  },
-                                ).then((value) => setState(() {}));
-                              },
-                              text: 'Create Comment',
-                              options: FFButtonOptions(
-                                width: 130.0,
-                                height: 40.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color:
-                                    FlutterFlowTheme.of(context).primaryColor,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .subtitle2
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .subtitle2Family,
-                                      color: Colors.white,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .subtitle2Family),
-                                    ),
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                            ),
-                          ],
                         ),
                       ],
                     ),

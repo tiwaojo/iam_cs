@@ -10,7 +10,12 @@ import 'create_comment_model.dart';
 export 'create_comment_model.dart';
 
 class CreateCommentWidget extends StatefulWidget {
-  const CreateCommentWidget({Key? key}) : super(key: key);
+  const CreateCommentWidget({
+    Key? key,
+    this.threadID,
+  }) : super(key: key);
+
+  final int? threadID;
 
   @override
   _CreateCommentWidgetState createState() => _CreateCommentWidgetState();
@@ -306,6 +311,7 @@ class _CreateCommentWidgetState extends State<CreateCommentWidget> {
                             commentContent: _model.shortBioController2.text,
                             userName: FFAppState().userName,
                             password: FFAppState().password,
+                            threadId: widget.threadID,
                           );
                           if ((_model.commentCreateRes?.succeeded ?? true)) {
                             ScaffoldMessenger.of(context).showSnackBar(

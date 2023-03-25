@@ -21,6 +21,8 @@ class CommentsModel extends FlutterFlowModel {
   late SideBarNavModel sideBarNavModel;
   // State field(s) for ListView widget.
   PagingController<ApiPagingParams, dynamic>? pagingController;
+  // Stores action output result for [Backend Call - API (thread)] action in Button widget.
+  ApiCallResponse? getThreadRes;
   // Stores action output result for [Backend Call - API (deletecomment)] action in Button widget.
   ApiCallResponse? deleteCommentRes;
 

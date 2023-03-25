@@ -305,7 +305,7 @@ class _EditThreadWidgetState extends State<EditThreadWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 44.0),
                       child: FFButtonWidget(
                         onPressed: () async {
-                          _model.threadCreateRes = await ThreadeditCall.call(
+                          _model.threadEditRes = await ThreadeditCall.call(
                             editThreadJson: widget.thread,
                             userName: FFAppState().userName,
                             password: FFAppState().password,
@@ -322,11 +322,11 @@ class _EditThreadWidgetState extends State<EditThreadWidget> {
                               r'''$.threadDescription''',
                             ).toString(),
                           );
-                          if ((_model.threadCreateRes?.succeeded ?? true)) {
+                          if ((_model.threadEditRes?.succeeded ?? true)) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  (_model.threadCreateRes?.jsonBody ?? '')
+                                  (_model.threadEditRes?.jsonBody ?? '')
                                       .toString(),
                                   style: TextStyle(
                                     color: FlutterFlowTheme.of(context)
@@ -342,7 +342,7 @@ class _EditThreadWidgetState extends State<EditThreadWidget> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  (_model.threadCreateRes?.statusCode ?? 200)
+                                  (_model.threadEditRes?.statusCode ?? 200)
                                       .toString(),
                                   style: TextStyle(
                                     color: FlutterFlowTheme.of(context)

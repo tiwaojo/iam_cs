@@ -17,7 +17,7 @@ class EditThreadModel extends FlutterFlowModel {
   TextEditingController? shortBioController2;
   String? Function(BuildContext, String?)? shortBioController2Validator;
   // Stores action output result for [Backend Call - API (threadedit)] action in Button widget.
-  ApiCallResponse? threadCreateRes;
+  ApiCallResponse? threadEditRes;
 
   /// Initialization and disposal methods.
 
