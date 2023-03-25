@@ -23,7 +23,7 @@ class RegisterCall {
     return ApiManager.instance.makeApiCall(
       callName: 'register',
       apiUrl:
-          'https://waleed20210-organic-carnival-jggw55j5jgg2x5q-5432.preview.app.github.dev/api/v1/register',
+          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/register',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -50,7 +50,7 @@ class LoginCall {
     return ApiManager.instance.makeApiCall(
       callName: 'login',
       apiUrl:
-          'https://waleed20210-organic-carnival-jggw55j5jgg2x5q-5432.preview.app.github.dev/api/v1/login',
+          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/login',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -73,7 +73,7 @@ class ThreadCall {
     return ApiManager.instance.makeApiCall(
       callName: 'thread',
       apiUrl:
-          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/thread',
+          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/thread',
       callType: ApiCallType.GET,
       headers: {
         'username': '${userName}',
@@ -99,7 +99,7 @@ class ThreadeditCall {
     return ApiManager.instance.makeApiCall(
       callName: 'threadedit',
       apiUrl:
-          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/thread/edit',
+          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/thread/edit',
       callType: ApiCallType.POST,
       headers: {
         'username': '${userName}',
@@ -124,7 +124,7 @@ class ThreadlistCall {
     return ApiManager.instance.makeApiCall(
       callName: 'threadlist',
       apiUrl:
-          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/thread/list',
+          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/thread/list',
       callType: ApiCallType.GET,
       headers: {
         'username': '${userName}',
@@ -150,7 +150,7 @@ class ThreadcreateCall {
     return ApiManager.instance.makeApiCall(
       callName: 'threadcreate',
       apiUrl:
-          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/thread/create',
+          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/thread/create',
       callType: ApiCallType.POST,
       headers: {
         'username': '${userName}',
@@ -175,7 +175,7 @@ class ThreaddeleteCall {
     return ApiManager.instance.makeApiCall(
       callName: 'threaddelete',
       apiUrl:
-          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/thread/delete/{threadId}',
+          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/thread/delete/{threadId}',
       callType: ApiCallType.DELETE,
       headers: {
         'username': '${userName}',
@@ -204,7 +204,7 @@ class CommentlistCall {
     return ApiManager.instance.makeApiCall(
       callName: 'commentlist',
       apiUrl:
-          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/comment/list',
+          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/comment/list',
       callType: ApiCallType.GET,
       headers: {
         'username': '${userName}',
@@ -230,7 +230,7 @@ class CommentcreateCall {
     return ApiManager.instance.makeApiCall(
       callName: 'commentcreate',
       apiUrl:
-          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/comment/create',
+          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/comment/create',
       callType: ApiCallType.POST,
       headers: {
         'username': '${userName}',
@@ -260,7 +260,7 @@ class EditcommentCall {
     return ApiManager.instance.makeApiCall(
       callName: 'editcomment',
       apiUrl:
-          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/comment/edit',
+          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/comment/edit',
       callType: ApiCallType.POST,
       headers: {
         'username': '${userName}',
@@ -286,7 +286,7 @@ class DeletecommentCall {
     return ApiManager.instance.makeApiCall(
       callName: 'deletecomment',
       apiUrl:
-          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/comment/delete/{commentId}',
+          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/comment/delete/{commentId}',
       callType: ApiCallType.DELETE,
       headers: {
         'username': '${userName}',
@@ -314,7 +314,7 @@ class UsereditCall {
     return ApiManager.instance.makeApiCall(
       callName: 'useredit',
       apiUrl:
-          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/user/edit',
+          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/user/edit',
       callType: ApiCallType.POST,
       headers: {
         'username': '${userName}',
@@ -339,7 +339,7 @@ class UserlistCall {
     return ApiManager.instance.makeApiCall(
       callName: 'userlist',
       apiUrl:
-          'https://api.allorigins.win/raw?url=https://waleed20210-super-duper-space-telegram-v557vv6vvx4hp6gw-5432.preview.app.github.dev/api/v1/user/list',
+          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/user/list',
       callType: ApiCallType.GET,
       headers: {
         'username': '${userName}',

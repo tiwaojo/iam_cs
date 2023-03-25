@@ -82,6 +82,13 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.user;
+    if (value != null) {
+      result
+        ..add('user')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -140,6 +147,10 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
           result.city = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'user':
+          result.user = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -173,6 +184,8 @@ class _$UsersRecord extends UsersRecord {
   @override
   final String? city;
   @override
+  final String? user;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$UsersRecord([void Function(UsersRecordBuilder)? updates]) =>
@@ -188,6 +201,7 @@ class _$UsersRecord extends UsersRecord {
       this.state,
       this.bio,
       this.city,
+      this.user,
       this.ffRef})
       : super._();
 
@@ -211,29 +225,26 @@ class _$UsersRecord extends UsersRecord {
         state == other.state &&
         bio == other.bio &&
         city == other.city &&
+        user == other.user &&
         ffRef == other.ffRef;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc($jc(0, email.hashCode),
-                                        displayName.hashCode),
-                                    photoUrl.hashCode),
-                                uid.hashCode),
-                            createdTime.hashCode),
-                        phoneNumber.hashCode),
-                    state.hashCode),
-                bio.hashCode),
-            city.hashCode),
-        ffRef.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, email.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, photoUrl.hashCode);
+    _$hash = $jc(_$hash, uid.hashCode);
+    _$hash = $jc(_$hash, createdTime.hashCode);
+    _$hash = $jc(_$hash, phoneNumber.hashCode);
+    _$hash = $jc(_$hash, state.hashCode);
+    _$hash = $jc(_$hash, bio.hashCode);
+    _$hash = $jc(_$hash, city.hashCode);
+    _$hash = $jc(_$hash, user.hashCode);
+    _$hash = $jc(_$hash, ffRef.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -248,6 +259,7 @@ class _$UsersRecord extends UsersRecord {
           ..add('state', state)
           ..add('bio', bio)
           ..add('city', city)
+          ..add('user', user)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -292,6 +304,10 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   String? get city => _$this._city;
   set city(String? city) => _$this._city = city;
 
+  String? _user;
+  String? get user => _$this._user;
+  set user(String? user) => _$this._user = user;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -312,6 +328,7 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
       _state = $v.state;
       _bio = $v.bio;
       _city = $v.city;
+      _user = $v.user;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -344,10 +361,11 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
             state: state,
             bio: bio,
             city: city,
+            user: user,
             ffRef: ffRef);
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

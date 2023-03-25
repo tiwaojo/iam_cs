@@ -306,6 +306,8 @@ class _CreateThreadWidgetState extends State<CreateThreadWidget> {
                             dateCreated: dateTimeFromSecondsSinceEpoch(
                                     getCurrentTimestamp.secondsSinceEpoch)
                                 .toString(),
+                            userName: FFAppState().userName,
+                            password: FFAppState().password,
                           );
                           if ((_model.threadCreateRes?.succeeded ?? true)) {
                             ScaffoldMessenger.of(context).showSnackBar(

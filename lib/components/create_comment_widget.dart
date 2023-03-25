@@ -308,6 +308,8 @@ class _CreateCommentWidgetState extends State<CreateCommentWidget> {
                                 'yMd',
                                 dateTimeFromSecondsSinceEpoch(
                                     getCurrentTimestamp.secondsSinceEpoch)),
+                            userName: FFAppState().userName,
+                            password: FFAppState().password,
                           );
                           if ((_model.commentCreateRes?.succeeded ?? true)) {
                             ScaffoldMessenger.of(context).showSnackBar(
