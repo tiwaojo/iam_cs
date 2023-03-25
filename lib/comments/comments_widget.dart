@@ -442,7 +442,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                           child: Text(
                                                             getJsonField(
                                                               commentsItem,
-                                                              r'''$..commentTitle''',
+                                                              r'''$.commentTitle''',
                                                             ).toString(),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -457,7 +457,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                           child: Text(
                                                             getJsonField(
                                                               commentsItem,
-                                                              r'''$..dateCreated''',
+                                                              r'''$.dateCreated''',
                                                             ).toString(),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -554,7 +554,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                                             .transparent,
                                                                     barrierColor:
                                                                         Color(
-                                                                            0x00000000),
+                                                                            0x79212C36),
                                                                     isDismissible:
                                                                         false,
                                                                     context:
@@ -573,7 +573,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                                             threadID:
                                                                                 getJsonField(
                                                                               (_model.getThreadRes?.jsonBody ?? ''),
-                                                                              r'''$..threadId''',
+                                                                              r'''$.threadId''',
                                                                             ),
                                                                           ),
                                                                         ),

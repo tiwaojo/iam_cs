@@ -322,11 +322,9 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                   ).then(
                                                       (listViewThreadlistResponse) {
                                                     final pageItems =
-                                                        getJsonField(
-                                                      listViewThreadlistResponse
-                                                          .jsonBody,
-                                                      r'''$.threads''',
-                                                    ).toList() as List;
+                                                        listViewThreadlistResponse
+                                                            .jsonBody
+                                                            .toList() as List;
                                                     final newNumItems =
                                                         nextPageMarker
                                                                 .numItems +
@@ -499,7 +497,7 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                                 child: Text(
                                                                   getJsonField(
                                                                     threadItem,
-                                                                    r'''$..threadName''',
+                                                                    r'''$.threadName''',
                                                                   ).toString(),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
@@ -514,7 +512,7 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                                 child: Text(
                                                                   getJsonField(
                                                                     threadItem,
-                                                                    r'''$..dateCreated''',
+                                                                    r'''$.dateCreated''',
                                                                   ).toString(),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
@@ -530,7 +528,7 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                                 child: Text(
                                                                   getJsonField(
                                                                     threadItem,
-                                                                    r'''$..threadDescription''',
+                                                                    r'''$.threadDescription''',
                                                                   ).toString(),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
