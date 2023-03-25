@@ -168,7 +168,7 @@ class ThreaddeleteCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'threaddelete',
-      apiUrl: '/http://localhost:8080/api/v1/thread/delete/{threadId}',
+      apiUrl: 'http://localhost:8080/api/v1/thread/delete/{threadId}',
       callType: ApiCallType.DELETE,
       headers: {
         'username': '${userName}',
@@ -250,8 +250,7 @@ class EditcommentCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'editcomment',
-      apiUrl:
-          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/comment/edit',
+      apiUrl: 'http://localhost:8080/api/v1/comment/edit',
       callType: ApiCallType.POST,
       headers: {
         'username': '${userName}',
@@ -276,8 +275,7 @@ class DeletecommentCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'deletecomment',
-      apiUrl:
-          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/comment/delete/{commentId}',
+      apiUrl: 'http://localhost:8080api/v1/comment/delete/{commentId}',
       callType: ApiCallType.DELETE,
       headers: {
         'username': '${userName}',
@@ -304,8 +302,7 @@ class UsereditCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'useredit',
-      apiUrl:
-          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/user/edit',
+      apiUrl: 'http://localhost:8080/api/v1/user/edit',
       callType: ApiCallType.POST,
       headers: {
         'username': '${userName}',
@@ -329,8 +326,7 @@ class UserlistCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'userlist',
-      apiUrl:
-          'https://waleed20210-orange-umbrella-4rr977j7qp52jx56-5432.preview.app.github.dev/api/v1/user/list',
+      apiUrl: 'http://localhost:8080/api/v1/user/list',
       callType: ApiCallType.GET,
       headers: {
         'username': '${userName}',
