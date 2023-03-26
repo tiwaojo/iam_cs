@@ -312,6 +312,7 @@ class _CreateCommentWidgetState extends State<CreateCommentWidget> {
                             userName: FFAppState().userName,
                             password: FFAppState().password,
                             threadId: widget.threadID,
+                            createdBy: FFAppState().userName,
                           );
                           if ((_model.commentCreateRes?.succeeded ?? true)) {
                             ScaffoldMessenger.of(context).showSnackBar(

@@ -315,6 +315,10 @@ class _EditThreadWidgetState extends State<EditThreadWidget> {
                             ),
                             threadName: _model.shortBioController1.text,
                             threadDescription: _model.shortBioController2.text,
+                            createdBy: getJsonField(
+                              widget.thread,
+                              r'''$.createdBy''',
+                            ).toString(),
                           );
                           if ((_model.threadEditRes?.succeeded ?? true)) {
                             ScaffoldMessenger.of(context).showSnackBar(

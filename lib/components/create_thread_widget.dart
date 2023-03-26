@@ -305,6 +305,7 @@ class _CreateThreadWidgetState extends State<CreateThreadWidget> {
                             threadDescription: _model.shortBioController2.text,
                             userName: FFAppState().userName,
                             password: FFAppState().password,
+                            createdBy: FFAppState().userName,
                           );
                           if ((_model.threadCreateRes?.succeeded ?? true)) {
                             ScaffoldMessenger.of(context).showSnackBar(

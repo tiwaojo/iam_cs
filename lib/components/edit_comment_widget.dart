@@ -319,6 +319,10 @@ class _EditCommentWidgetState extends State<EditCommentWidget> {
                             ),
                             commentTitle: _model.shortBioController1.text,
                             commentContent: _model.shortBioController2.text,
+                            createdBy: getJsonField(
+                              widget.comment,
+                              r'''$.createdBy''',
+                            ).toString(),
                           );
                           if ((_model.commentEditRes?.succeeded ?? true)) {
                             ScaffoldMessenger.of(context).showSnackBar(

@@ -96,6 +96,7 @@ class ThreadeditCall {
     String? threadName = '',
     String? threadDescription = '',
     String? dateCreated = '',
+    String? createdBy = '',
   }) {
     final editThread = _serializeJson(editThreadJson);
     final body = '''
@@ -103,7 +104,8 @@ class ThreadeditCall {
   "threadId": "${threadId}",
   "threadName": "${threadName}",
   "threadDescription": "${threadDescription}",
-  "dateCreated": "${dateCreated}"
+  "dateCreated": "${dateCreated}",
+  "createdBy": "${createdBy}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'threadedit',
@@ -154,12 +156,14 @@ class ThreadcreateCall {
     String? dateCreated = '',
     String? userName = '',
     String? password = '',
+    String? createdBy = '',
   }) {
     final body = '''
 {
   "threadName": "${threadName}",
   "threadDescription": "${threadDescription}",
-  "dateCreated": "${dateCreated}"
+  "dateCreated": "${dateCreated}",
+  "createdBy": "${createdBy}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'threadcreate',
@@ -239,12 +243,14 @@ class CommentcreateCall {
     String? userName = '',
     String? password = '',
     int? threadId,
+    String? createdBy = '',
   }) {
     final body = '''
 {
   "commentTitle": "${commentTitle}",
   "commentContent": "${commentContent}",
-  "threadId": ${threadId}
+  "threadId": ${threadId},
+  "createdBy": "${createdBy}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'commentcreate',
@@ -275,6 +281,7 @@ class EditcommentCall {
     String? commentTitle = '',
     String? commentContent = '',
     String? dateCreated = '',
+    String? createdBy = '',
   }) {
     final editComment = _serializeJson(editCommentJson);
     final body = '''
@@ -283,7 +290,8 @@ class EditcommentCall {
   "commentId": ${commentId},
   "commentTitle": "${commentTitle}",
   "commentContent": "${commentContent}",
-  "dateCreated": "${dateCreated}"
+  "dateCreated": "${dateCreated}",
+  "createdBy": "${createdBy}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'editcomment',
