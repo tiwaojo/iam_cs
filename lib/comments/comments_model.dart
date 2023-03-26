@@ -1,5 +1,4 @@
 import '/backend/api_requests/api_calls.dart';
-import '/components/create_comment_widget.dart';
 import '/components/edit_comment_widget.dart';
 import '/components/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -21,8 +20,6 @@ class CommentsModel extends FlutterFlowModel {
   late SideBarNavModel sideBarNavModel;
   // State field(s) for ListView widget.
   PagingController<ApiPagingParams, dynamic>? pagingController;
-  // Stores action output result for [Backend Call - API (thread)] action in Button widget.
-  ApiCallResponse? getThreadRes;
   // Stores action output result for [Backend Call - API (deletecomment)] action in Button widget.
   ApiCallResponse? deleteCommentRes;
 

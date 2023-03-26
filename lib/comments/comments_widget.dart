@@ -1,5 +1,4 @@
 import '/backend/api_requests/api_calls.dart';
-import '/components/create_comment_widget.dart';
 import '/components/edit_comment_widget.dart';
 import '/components/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -274,6 +273,9 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                               final pageItems =
                                                   listViewCommentlistResponse
                                                       .jsonBody
+                                                      .take(10 -
+                                                          nextPageMarker
+                                                              .numItems)
                                                       .toList() as List;
                                               final newNumItems =
                                                   nextPageMarker.numItems +
@@ -281,7 +283,8 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                               _model.pagingController!
                                                   .appendPage(
                                                 pageItems,
-                                                (pageItems.length > 0)
+                                                (pageItems.length > 0) &&
+                                                        newNumItems < 10
                                                     ? ApiPagingParams(
                                                         nextPageNumber:
                                                             nextPageMarker
@@ -528,108 +531,6 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                                         ),
                                                                   ),
                                                                 ),
-                                                              FFButtonWidget(
-                                                                onPressed:
-                                                                    () async {
-                                                                  _model.getThreadRes =
-                                                                      await ThreadCall
-                                                                          .call(
-                                                                    threadId:
-                                                                        getJsonField(
-                                                                      commentsItem,
-                                                                      r'''$..threadId''',
-                                                                    ).toString(),
-                                                                    userName:
-                                                                        FFAppState()
-                                                                            .userName,
-                                                                    password:
-                                                                        FFAppState()
-                                                                            .password,
-                                                                  );
-                                                                  await showModalBottomSheet(
-                                                                    isScrollControlled:
-                                                                        true,
-                                                                    backgroundColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    barrierColor:
-                                                                        Color(
-                                                                            0x79212C36),
-                                                                    isDismissible:
-                                                                        false,
-                                                                    context:
-                                                                        context,
-                                                                    builder:
-                                                                        (context) {
-                                                                      return Padding(
-                                                                        padding:
-                                                                            MediaQuery.of(context).viewInsets,
-                                                                        child:
-                                                                            Container(
-                                                                          height:
-                                                                              MediaQuery.of(context).size.height * 0.5,
-                                                                          child:
-                                                                              CreateCommentWidget(
-                                                                            threadID:
-                                                                                getJsonField(
-                                                                              (_model.getThreadRes?.jsonBody ?? ''),
-                                                                              r'''$.threadId''',
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      );
-                                                                    },
-                                                                  ).then((value) =>
-                                                                      setState(
-                                                                          () {}));
-
-                                                                  setState(
-                                                                      () {});
-                                                                },
-                                                                text:
-                                                                    'Create Comment',
-                                                                options:
-                                                                    FFButtonOptions(
-                                                                  width: 90.0,
-                                                                  height: 30.0,
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  iconPadding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryColor,
-                                                                  textStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .subtitle2
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            FlutterFlowTheme.of(context).subtitle2Family,
-                                                                        color: Colors
-                                                                            .white,
-                                                                        useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).subtitle2Family),
-                                                                      ),
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Colors
-                                                                        .transparent,
-                                                                    width: 1.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                ),
-                                                              ),
                                                               FFButtonWidget(
                                                                 onPressed:
                                                                     () async {
