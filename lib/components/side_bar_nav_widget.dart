@@ -191,7 +191,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
               child: InkWell(
                 onTap: () async {
-                  context.pushNamed('roles');
+                  context.goNamed('roles');
                 },
                 child: Container(
                   width: double.infinity,

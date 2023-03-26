@@ -102,7 +102,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'roles',
               path: 'roles',
-              requireAuth: true,
               builder: (context, params) => RolesWidget(),
             ),
             FFRoute(
