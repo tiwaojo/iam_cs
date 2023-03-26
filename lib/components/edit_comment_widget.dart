@@ -340,11 +340,11 @@ class _EditCommentWidgetState extends State<EditCommentWidget> {
                             );
                             Navigator.pop(context);
                           } else {
+                            ScaffoldMessenger.of(context).clearSnackBars();
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  (_model.commentEditRes?.statusCode ?? 200)
-                                      .toString(),
+                                  '${(_model.commentEditRes?.statusCode ?? 200).toString()}Unauthorized',
                                   style: TextStyle(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,

@@ -326,8 +326,7 @@ class _CreateThreadWidgetState extends State<CreateThreadWidget> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  (_model.threadCreateRes?.statusCode ?? 200)
-                                      .toString(),
+                                  '${(_model.threadCreateRes?.statusCode ?? 200).toString()}Unauthorized',
                                   style: TextStyle(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,

@@ -321,6 +321,7 @@ class _EditThreadWidgetState extends State<EditThreadWidget> {
                             ).toString(),
                           );
                           if ((_model.threadEditRes?.succeeded ?? true)) {
+                            ScaffoldMessenger.of(context).clearSnackBars();
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
@@ -332,16 +333,17 @@ class _EditThreadWidgetState extends State<EditThreadWidget> {
                                   ),
                                 ),
                                 duration: Duration(milliseconds: 4000),
-                                backgroundColor: Color(0x00000000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).secondaryColor,
                               ),
                             );
                             Navigator.pop(context);
                           } else {
+                            ScaffoldMessenger.of(context).clearSnackBars();
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  (_model.threadEditRes?.statusCode ?? 200)
-                                      .toString(),
+                                  '${(_model.threadEditRes?.statusCode ?? 200).toString()}Unauthorized',
                                   style: TextStyle(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
