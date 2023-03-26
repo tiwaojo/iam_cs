@@ -192,6 +192,20 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                             Expanded(
                                               flex: 2,
                                               child: Text(
+                                                'Thread Title',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText2,
+                                              ),
+                                            ),
+                                          if (responsiveVisibility(
+                                            context: context,
+                                            phone: false,
+                                            tablet: false,
+                                          ))
+                                            Expanded(
+                                              flex: 2,
+                                              child: Text(
                                                 'Comment Title',
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -306,350 +320,374 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                                     12.0,
                                                                     12.0,
                                                                     12.0),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Expanded(
-                                                              flex: 2,
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
+                                                        child: FutureBuilder<
+                                                            ApiCallResponse>(
+                                                          future:
+                                                              ThreadCall.call(
+                                                            userName:
+                                                                FFAppState()
+                                                                    .userName,
+                                                            password:
+                                                                FFAppState()
+                                                                    .password,
+                                                            threadId:
+                                                                getJsonField(
+                                                              commentsItem,
+                                                              r'''$.threadId''',
+                                                            ).toString(),
+                                                          ),
+                                                          builder: (context,
+                                                              snapshot) {
+                                                            // Customize what your widget looks like when it's loading.
+                                                            if (!snapshot
+                                                                .hasData) {
+                                                              return Center(
+                                                                child: SizedBox(
+                                                                  width: 50.0,
+                                                                  height: 50.0,
+                                                                  child:
+                                                                      CircularProgressIndicator(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryColor,
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            }
+                                                            final rowThreadResponse =
+                                                                snapshot.data!;
+                                                            return Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Expanded(
+                                                                  flex: 2,
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             12.0,
                                                                             0.0),
-                                                                    child:
-                                                                        ClipRRect(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              12.0),
-                                                                      child:
-                                                                          CachedNetworkImage(
-                                                                        imageUrl:
-                                                                            random_data.randomImageUrl(
-                                                                          0,
-                                                                          0,
-                                                                        ),
-                                                                        width:
-                                                                            40.0,
-                                                                        height:
-                                                                            40.0,
-                                                                        fit: BoxFit
-                                                                            .cover,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Column(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    crossAxisAlignment:
-                                                                        CrossAxisAlignment
-                                                                            .start,
-                                                                    children: [
-                                                                      AutoSizeText(
-                                                                        getJsonField(
-                                                                          commentsItem,
-                                                                          r'''$.createdBy''',
-                                                                        )
-                                                                            .toString()
-                                                                            .maybeHandleOverflow(
-                                                                              maxChars: 32,
-                                                                              replacement: '…',
-                                                                            ),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .subtitle1,
-                                                                      ),
-                                                                      if (responsiveVisibility(
-                                                                        context:
-                                                                            context,
-                                                                        tabletLandscape:
-                                                                            false,
-                                                                        desktop:
-                                                                            false,
-                                                                      ))
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              2.0,
-                                                                              0.0,
-                                                                              0.0),
+                                                                        child:
+                                                                            ClipRRect(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(12.0),
                                                                           child:
-                                                                              Text(
-                                                                            'user@domainname.com',
-                                                                            style:
-                                                                                FlutterFlowTheme.of(context).bodyText2,
+                                                                              CachedNetworkImage(
+                                                                            imageUrl:
+                                                                                random_data.randomImageUrl(
+                                                                              0,
+                                                                              0,
+                                                                            ),
+                                                                            width:
+                                                                                40.0,
+                                                                            height:
+                                                                                40.0,
+                                                                            fit:
+                                                                                BoxFit.cover,
                                                                           ),
                                                                         ),
+                                                                      ),
+                                                                      Column(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          AutoSizeText(
+                                                                            getJsonField(
+                                                                              commentsItem,
+                                                                              r'''$.createdBy''',
+                                                                            ).toString().maybeHandleOverflow(
+                                                                                  maxChars: 32,
+                                                                                  replacement: '…',
+                                                                                ),
+                                                                            style:
+                                                                                FlutterFlowTheme.of(context).subtitle1,
+                                                                          ),
+                                                                          if (responsiveVisibility(
+                                                                            context:
+                                                                                context,
+                                                                            tabletLandscape:
+                                                                                false,
+                                                                            desktop:
+                                                                                false,
+                                                                          ))
+                                                                            Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
+                                                                              child: Text(
+                                                                                'user@domainname.com',
+                                                                                style: FlutterFlowTheme.of(context).bodyText2,
+                                                                              ),
+                                                                            ),
+                                                                        ],
+                                                                      ),
                                                                     ],
                                                                   ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                            if (responsiveVisibility(
-                                                              context: context,
-                                                              phone: false,
-                                                              tablet: false,
-                                                            ))
-                                                              Expanded(
-                                                                flex: 2,
-                                                                child: Text(
-                                                                  getJsonField(
-                                                                    commentsItem,
-                                                                    r'''$.commentTitle''',
-                                                                  ).toString(),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyText1,
                                                                 ),
-                                                              ),
-                                                            if (responsiveVisibility(
-                                                              context: context,
-                                                              phone: false,
-                                                            ))
-                                                              Expanded(
-                                                                child: Text(
-                                                                  getJsonField(
-                                                                    commentsItem,
-                                                                    r'''$.dateCreated''',
-                                                                  ).toString(),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyText1,
-                                                                ),
-                                                              ),
-                                                            if (responsiveVisibility(
-                                                              context: context,
-                                                              phone: false,
-                                                              tablet: false,
-                                                            ))
-                                                              Expanded(
-                                                                child: Text(
-                                                                  getJsonField(
-                                                                    commentsItem,
-                                                                    r'''$.commentContent''',
-                                                                  ).toString(),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyText1,
-                                                                ),
-                                                              ),
-                                                            Expanded(
-                                                              child: Align(
-                                                                alignment:
-                                                                    AlignmentDirectional(
-                                                                        1.0,
-                                                                        0.0),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .spaceEvenly,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .end,
-                                                                  children: [
-                                                                    if (responsiveVisibility(
-                                                                      context:
-                                                                          context,
-                                                                      tablet:
-                                                                          false,
-                                                                      tabletLandscape:
-                                                                          false,
-                                                                      desktop:
-                                                                          false,
-                                                                    ))
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            2.0,
-                                                                            0.0,
+                                                                if (responsiveVisibility(
+                                                                  context:
+                                                                      context,
+                                                                  phone: false,
+                                                                  tablet: false,
+                                                                ))
+                                                                  Expanded(
+                                                                    flex: 2,
+                                                                    child: Text(
+                                                                      getJsonField(
+                                                                        rowThreadResponse
+                                                                            .jsonBody,
+                                                                        r'''$.threadName''',
+                                                                      ).toString(),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyText1,
+                                                                    ),
+                                                                  ),
+                                                                if (responsiveVisibility(
+                                                                  context:
+                                                                      context,
+                                                                  phone: false,
+                                                                  tablet: false,
+                                                                ))
+                                                                  Expanded(
+                                                                    flex: 2,
+                                                                    child: Text(
+                                                                      getJsonField(
+                                                                        commentsItem,
+                                                                        r'''$.commentTitle''',
+                                                                      ).toString(),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyText1,
+                                                                    ),
+                                                                  ),
+                                                                if (responsiveVisibility(
+                                                                  context:
+                                                                      context,
+                                                                  phone: false,
+                                                                ))
+                                                                  Expanded(
+                                                                    child: Text(
+                                                                      getJsonField(
+                                                                        commentsItem,
+                                                                        r'''$.dateCreated''',
+                                                                      ).toString(),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyText1,
+                                                                    ),
+                                                                  ),
+                                                                if (responsiveVisibility(
+                                                                  context:
+                                                                      context,
+                                                                  phone: false,
+                                                                  tablet: false,
+                                                                ))
+                                                                  Expanded(
+                                                                    child: Text(
+                                                                      getJsonField(
+                                                                        commentsItem,
+                                                                        r'''$.commentContent''',
+                                                                      ).toString(),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyText1,
+                                                                    ),
+                                                                  ),
+                                                                Expanded(
+                                                                  child: Align(
+                                                                    alignment:
+                                                                        AlignmentDirectional(
+                                                                            1.0,
                                                                             0.0),
-                                                                        child:
-                                                                            Text(
-                                                                          dateTimeFormat(
-                                                                              'relative',
-                                                                              getCurrentTimestamp),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText2
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodyText2Family,
-                                                                                color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyText2Family),
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                    FFButtonWidget(
-                                                                      onPressed:
-                                                                          () async {
-                                                                        await showModalBottomSheet(
-                                                                          isScrollControlled:
-                                                                              true,
-                                                                          backgroundColor:
-                                                                              Colors.transparent,
-                                                                          barrierColor:
-                                                                              Color(0x00000000),
-                                                                          isDismissible:
-                                                                              false,
+                                                                    child:
+                                                                        Column(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .spaceEvenly,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .end,
+                                                                      children: [
+                                                                        if (responsiveVisibility(
                                                                           context:
                                                                               context,
-                                                                          builder:
-                                                                              (context) {
-                                                                            return Padding(
-                                                                              padding: MediaQuery.of(context).viewInsets,
-                                                                              child: Container(
-                                                                                height: MediaQuery.of(context).size.height * 0.5,
-                                                                                child: EditCommentWidget(
-                                                                                  comment: commentsItem,
-                                                                                ),
-                                                                              ),
-                                                                            );
-                                                                          },
-                                                                        ).then((value) =>
-                                                                            setState(() {}));
-                                                                      },
-                                                                      text:
-                                                                          'Edit',
-                                                                      options:
-                                                                          FFButtonOptions(
-                                                                        width:
-                                                                            90.0,
-                                                                        height:
-                                                                            20.0,
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .white70,
-                                                                        textStyle: FlutterFlowTheme.of(context)
-                                                                            .subtitle2
-                                                                            .override(
-                                                                              fontFamily: FlutterFlowTheme.of(context).subtitle2Family,
-                                                                              color: Colors.white,
-                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).subtitle2Family),
+                                                                          tablet:
+                                                                              false,
+                                                                          tabletLandscape:
+                                                                              false,
+                                                                          desktop:
+                                                                              false,
+                                                                        ))
+                                                                          Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                0.0,
+                                                                                2.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                            child:
+                                                                                Text(
+                                                                              dateTimeFormat('relative', getCurrentTimestamp),
+                                                                              style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyText2Family,
+                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyText2Family),
+                                                                                  ),
                                                                             ),
-                                                                        borderSide:
-                                                                            BorderSide(
-                                                                          color:
-                                                                              Colors.transparent,
-                                                                          width:
-                                                                              1.0,
-                                                                        ),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(8.0),
-                                                                      ),
-                                                                    ),
-                                                                    FFButtonWidget(
-                                                                      onPressed:
-                                                                          () async {
-                                                                        _model.deleteCommentRes =
-                                                                            await DeletecommentCall.call(
-                                                                          commentId:
-                                                                              getJsonField(
-                                                                            commentsItem,
-                                                                            r'''$.commentId''',
                                                                           ),
-                                                                          userName:
-                                                                              FFAppState().userName,
-                                                                          password:
-                                                                              FFAppState().password,
-                                                                        );
-                                                                        if ((_model.deleteCommentRes?.succeeded ??
-                                                                            true)) {
-                                                                          ScaffoldMessenger.of(context)
-                                                                              .clearSnackBars();
-                                                                          ScaffoldMessenger.of(context)
-                                                                              .showSnackBar(
-                                                                            SnackBar(
-                                                                              content: Text(
-                                                                                '${(_model.deleteCommentRes?.statusCode ?? 200).toString()}${(_model.deleteCommentRes?.jsonBody ?? '').toString()}',
-                                                                                style: TextStyle(
-                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                        FFButtonWidget(
+                                                                          onPressed:
+                                                                              () async {
+                                                                            await showModalBottomSheet(
+                                                                              isScrollControlled: true,
+                                                                              backgroundColor: Colors.transparent,
+                                                                              barrierColor: Color(0x00000000),
+                                                                              isDismissible: false,
+                                                                              context: context,
+                                                                              builder: (context) {
+                                                                                return Padding(
+                                                                                  padding: MediaQuery.of(context).viewInsets,
+                                                                                  child: Container(
+                                                                                    height: MediaQuery.of(context).size.height * 0.5,
+                                                                                    child: EditCommentWidget(
+                                                                                      comment: commentsItem,
+                                                                                    ),
+                                                                                  ),
+                                                                                );
+                                                                              },
+                                                                            ).then((value) =>
+                                                                                setState(() {}));
+                                                                          },
+                                                                          text:
+                                                                              'Edit',
+                                                                          options:
+                                                                              FFButtonOptions(
+                                                                            width:
+                                                                                90.0,
+                                                                            height:
+                                                                                20.0,
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).white70,
+                                                                            textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).subtitle2Family,
+                                                                                  color: Colors.white,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).subtitle2Family),
                                                                                 ),
-                                                                              ),
-                                                                              duration: Duration(milliseconds: 4000),
-                                                                              backgroundColor: Color(0xFF36FF0D),
+                                                                            borderSide:
+                                                                                BorderSide(
+                                                                              color: Colors.transparent,
+                                                                              width: 1.0,
                                                                             ),
-                                                                          );
-                                                                        } else {
-                                                                          ScaffoldMessenger.of(context)
-                                                                              .clearSnackBars();
-                                                                          ScaffoldMessenger.of(context)
-                                                                              .showSnackBar(
-                                                                            SnackBar(
-                                                                              content: Text(
-                                                                                '${(_model.deleteCommentRes?.statusCode ?? 200).toString()}Unauthorized. User does not have access to complete this action',
-                                                                                style: TextStyle(
-                                                                                  color: FlutterFlowTheme.of(context).primaryText,
-                                                                                ),
-                                                                              ),
-                                                                              duration: Duration(milliseconds: 4000),
-                                                                              backgroundColor: FlutterFlowTheme.of(context).primary600,
-                                                                            ),
-                                                                          );
-                                                                        }
-
-                                                                        setState(
-                                                                            () {});
-                                                                      },
-                                                                      text:
-                                                                          'Delete',
-                                                                      options:
-                                                                          FFButtonOptions(
-                                                                        width:
-                                                                            90.0,
-                                                                        height:
-                                                                            20.0,
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primary600,
-                                                                        textStyle: FlutterFlowTheme.of(context)
-                                                                            .subtitle2
-                                                                            .override(
-                                                                              fontFamily: FlutterFlowTheme.of(context).subtitle2Family,
-                                                                              color: Colors.white,
-                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).subtitle2Family),
-                                                                            ),
-                                                                        borderSide:
-                                                                            BorderSide(
-                                                                          color:
-                                                                              Colors.transparent,
-                                                                          width:
-                                                                              1.0,
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(8.0),
+                                                                          ),
                                                                         ),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(8.0),
-                                                                      ),
+                                                                        FFButtonWidget(
+                                                                          onPressed:
+                                                                              () async {
+                                                                            _model.deleteCommentRes =
+                                                                                await DeletecommentCall.call(
+                                                                              commentId: getJsonField(
+                                                                                commentsItem,
+                                                                                r'''$.commentId''',
+                                                                              ),
+                                                                              userName: FFAppState().userName,
+                                                                              password: FFAppState().password,
+                                                                            );
+                                                                            if ((_model.deleteCommentRes?.succeeded ??
+                                                                                true)) {
+                                                                              ScaffoldMessenger.of(context).clearSnackBars();
+                                                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                                                SnackBar(
+                                                                                  content: Text(
+                                                                                    '${(_model.deleteCommentRes?.statusCode ?? 200).toString()}${(_model.deleteCommentRes?.jsonBody ?? '').toString()}',
+                                                                                    style: TextStyle(
+                                                                                      color: FlutterFlowTheme.of(context).primaryText,
+                                                                                    ),
+                                                                                  ),
+                                                                                  duration: Duration(milliseconds: 4000),
+                                                                                  backgroundColor: Color(0xFF36FF0D),
+                                                                                ),
+                                                                              );
+                                                                            } else {
+                                                                              ScaffoldMessenger.of(context).clearSnackBars();
+                                                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                                                SnackBar(
+                                                                                  content: Text(
+                                                                                    '${(_model.deleteCommentRes?.statusCode ?? 200).toString()}Unauthorized. User does not have access to complete this action',
+                                                                                    style: TextStyle(
+                                                                                      color: FlutterFlowTheme.of(context).primaryText,
+                                                                                    ),
+                                                                                  ),
+                                                                                  duration: Duration(milliseconds: 4000),
+                                                                                  backgroundColor: FlutterFlowTheme.of(context).primary600,
+                                                                                ),
+                                                                              );
+                                                                            }
+
+                                                                            setState(() {});
+                                                                          },
+                                                                          text:
+                                                                              'Delete',
+                                                                          options:
+                                                                              FFButtonOptions(
+                                                                            width:
+                                                                                90.0,
+                                                                            height:
+                                                                                20.0,
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primary600,
+                                                                            textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).subtitle2Family,
+                                                                                  color: Colors.white,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).subtitle2Family),
+                                                                                ),
+                                                                            borderSide:
+                                                                                BorderSide(
+                                                                              color: Colors.transparent,
+                                                                              width: 1.0,
+                                                                            ),
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(8.0),
+                                                                          ),
+                                                                        ),
+                                                                      ],
                                                                     ),
-                                                                  ],
+                                                                  ),
                                                                 ),
-                                                              ),
-                                                            ),
-                                                          ],
+                                                              ],
+                                                            );
+                                                          },
                                                         ),
                                                       ),
                                                     ),
