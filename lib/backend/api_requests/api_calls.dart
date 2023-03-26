@@ -70,15 +70,13 @@ class ThreadCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'thread',
-      apiUrl: 'http://localhost:8080/api/v1/thread/',
+      apiUrl: 'http://localhost:8080/api/v1/thread/${threadId}',
       callType: ApiCallType.GET,
       headers: {
         'username': '${userName}',
         'password': '${password}',
       },
-      params: {
-        'threadId': threadId,
-      },
+      params: {},
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
