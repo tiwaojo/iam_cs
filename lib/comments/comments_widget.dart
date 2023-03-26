@@ -588,16 +588,18 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                                           );
                                                                         } else {
                                                                           ScaffoldMessenger.of(context)
+                                                                              .clearSnackBars();
+                                                                          ScaffoldMessenger.of(context)
                                                                               .showSnackBar(
                                                                             SnackBar(
                                                                               content: Text(
-                                                                                'Snackbar not deleted. Please try again later',
+                                                                                '${(_model.deleteCommentRes?.statusCode ?? 200).toString()}Unauthorized. User does not have access to complete this action',
                                                                                 style: TextStyle(
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                 ),
                                                                               ),
                                                                               duration: Duration(milliseconds: 4000),
-                                                                              backgroundColor: Color(0x00000000),
+                                                                              backgroundColor: FlutterFlowTheme.of(context).primary600,
                                                                             ),
                                                                           );
                                                                         }
