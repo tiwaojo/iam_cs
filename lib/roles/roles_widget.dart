@@ -126,477 +126,465 @@ class _RolesWidgetState extends State<RolesWidget> {
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 16.0, 0.0, 12.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 0.0, 0.0),
-                                    child: Text(
-                                      'My Users',
-                                      style:
-                                          FlutterFlowTheme.of(context).title3,
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 0.0, 0.0, 0.0),
+                                      child: Text(
+                                        'My Users',
+                                        style:
+                                            FlutterFlowTheme.of(context).title3,
+                                      ),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 12.0, 12.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Expanded(
-                                          flex: 2,
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    8.0, 0.0, 0.0, 0.0),
-                                            child: Text(
-                                              'Member Name',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText2,
-                                            ),
-                                          ),
-                                        ),
-                                        if (responsiveVisibility(
-                                          context: context,
-                                          phone: false,
-                                          tablet: false,
-                                        ))
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 12.0, 12.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
                                           Expanded(
                                             flex: 2,
-                                            child: Text(
-                                              'Email',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText2,
-                                            ),
-                                          ),
-                                        if (responsiveVisibility(
-                                          context: context,
-                                          phone: false,
-                                        ))
-                                          Expanded(
-                                            child: Text(
-                                              'Last Active',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText2,
-                                            ),
-                                          ),
-                                        if (responsiveVisibility(
-                                          context: context,
-                                          phone: false,
-                                          tablet: false,
-                                        ))
-                                          Expanded(
-                                            child: Text(
-                                              'Date Created',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText2,
-                                            ),
-                                          ),
-                                        Expanded(
-                                          child: Text(
-                                            'Status',
-                                            textAlign: TextAlign.end,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText2,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 16.0, 0.0, 0.0),
-                                    child: FutureBuilder<ApiCallResponse>(
-                                      future: (_model.apiRequestCompleter ??=
-                                              Completer<ApiCallResponse>()
-                                                ..complete(UserlistCall.call(
-                                                  userName:
-                                                      FFAppState().userName,
-                                                  password:
-                                                      FFAppState().password,
-                                                )))
-                                          .future,
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: CircularProgressIndicator(
-                                                color:
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                              child: Text(
+                                                'Member Name',
+                                                style:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryColor,
+                                                        .bodyText2,
                                               ),
                                             ),
-                                          );
-                                        }
-                                        final listViewUserlistResponse =
-                                            snapshot.data!;
-                                        return Builder(
-                                          builder: (context) {
-                                            final users = getJsonField(
-                                              listViewUserlistResponse.jsonBody,
-                                              r'''$.users''',
-                                            ).toList();
-                                            return RefreshIndicator(
-                                              onRefresh: () async {
-                                                setState(() =>
-                                                    _model.apiRequestCompleter =
-                                                        null);
-                                                await _model
-                                                    .waitForApiRequestCompleted(
-                                                        maxWait: 4000);
-                                              },
-                                              child: ListView.builder(
-                                                padding: EdgeInsets.zero,
-                                                shrinkWrap: true,
-                                                scrollDirection: Axis.vertical,
-                                                itemCount: users.length,
-                                                itemBuilder:
-                                                    (context, usersIndex) {
-                                                  final usersItem =
-                                                      users[usersIndex];
-                                                  return Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 2.0),
-                                                    child: Container(
-                                                      width: double.infinity,
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        boxShadow: [
-                                                          BoxShadow(
-                                                            blurRadius: 0.0,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .lineColor,
-                                                            offset: Offset(
-                                                                0.0, 1.0),
-                                                          )
-                                                        ],
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    12.0,
-                                                                    12.0,
-                                                                    12.0,
-                                                                    12.0),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Expanded(
-                                                              flex: 2,
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            12.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        ClipRRect(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              12.0),
-                                                                      child:
-                                                                          CachedNetworkImage(
-                                                                        imageUrl:
-                                                                            'https://images.unsplash.com/photo-1611691543545-f19c70f74a29?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDQ0fHRvd0paRnNrcEdnfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
-                                                                        width:
-                                                                            40.0,
-                                                                        height:
-                                                                            40.0,
-                                                                        fit: BoxFit
-                                                                            .cover,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Column(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    crossAxisAlignment:
-                                                                        CrossAxisAlignment
-                                                                            .start,
-                                                                    children: [
-                                                                      AutoSizeText(
-                                                                        getJsonField(
-                                                                          usersItem,
-                                                                          r'''$.name''',
-                                                                        )
-                                                                            .toString()
-                                                                            .maybeHandleOverflow(
-                                                                              maxChars: 32,
-                                                                              replacement: '…',
-                                                                            ),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .subtitle1,
-                                                                      ),
-                                                                      if (responsiveVisibility(
-                                                                        context:
-                                                                            context,
-                                                                        tabletLandscape:
-                                                                            false,
-                                                                        desktop:
-                                                                            false,
-                                                                      ))
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              2.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Text(
-                                                                            'user@domainname.com',
-                                                                            style:
-                                                                                FlutterFlowTheme.of(context).bodyText2,
-                                                                          ),
-                                                                        ),
-                                                                    ],
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                            if (responsiveVisibility(
-                                                              context: context,
-                                                              phone: false,
-                                                              tablet: false,
-                                                            ))
+                                          ),
+                                          if (responsiveVisibility(
+                                            context: context,
+                                            phone: false,
+                                            tablet: false,
+                                          ))
+                                            Expanded(
+                                              flex: 2,
+                                              child: Text(
+                                                'Email',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText2,
+                                              ),
+                                            ),
+                                          if (responsiveVisibility(
+                                            context: context,
+                                            phone: false,
+                                          ))
+                                            Expanded(
+                                              child: Text(
+                                                'Last Active',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText2,
+                                              ),
+                                            ),
+                                          if (responsiveVisibility(
+                                            context: context,
+                                            phone: false,
+                                            tablet: false,
+                                          ))
+                                            Expanded(
+                                              child: Text(
+                                                'Date Created',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText2,
+                                              ),
+                                            ),
+                                          Expanded(
+                                            child: Text(
+                                              'Status',
+                                              textAlign: TextAlign.end,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText2,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 16.0, 0.0, 0.0),
+                                      child: FutureBuilder<ApiCallResponse>(
+                                        future: (_model.apiRequestCompleter ??=
+                                                Completer<ApiCallResponse>()
+                                                  ..complete(UserlistCall.call(
+                                                    userName:
+                                                        FFAppState().userName,
+                                                    password:
+                                                        FFAppState().password,
+                                                  )))
+                                            .future,
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryColor,
+                                                ),
+                                              ),
+                                            );
+                                          }
+                                          final listViewUserlistResponse =
+                                              snapshot.data!;
+                                          return Builder(
+                                            builder: (context) {
+                                              final users = getJsonField(
+                                                listViewUserlistResponse
+                                                    .jsonBody,
+                                                r'''$.users''',
+                                              ).toList();
+                                              return RefreshIndicator(
+                                                onRefresh: () async {
+                                                  setState(() => _model
+                                                          .apiRequestCompleter =
+                                                      null);
+                                                  await _model
+                                                      .waitForApiRequestCompleted(
+                                                          maxWait: 4000);
+                                                },
+                                                child: ListView.builder(
+                                                  padding: EdgeInsets.zero,
+                                                  shrinkWrap: true,
+                                                  scrollDirection:
+                                                      Axis.vertical,
+                                                  itemCount: users.length,
+                                                  itemBuilder:
+                                                      (context, usersIndex) {
+                                                    final usersItem =
+                                                        users[usersIndex];
+                                                    return Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  2.0),
+                                                      child: Container(
+                                                        width: double.infinity,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              blurRadius: 0.0,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .lineColor,
+                                                              offset: Offset(
+                                                                  0.0, 1.0),
+                                                            )
+                                                          ],
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      12.0,
+                                                                      12.0,
+                                                                      12.0,
+                                                                      12.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
                                                               Expanded(
                                                                 flex: 2,
-                                                                child: Text(
-                                                                  getJsonField(
-                                                                    usersItem,
-                                                                    r'''$.username''',
-                                                                  ).toString(),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyText1,
-                                                                ),
-                                                              ),
-                                                            Expanded(
-                                                              child: Builder(
-                                                                builder:
-                                                                    (context) {
-                                                                  final roles =
-                                                                      getJsonField(
-                                                                    usersItem,
-                                                                    r'''$.roles''',
-                                                                  ).toList();
-                                                                  return InkWell(
-                                                                    onTap:
-                                                                        () async {
-                                                                      _model.userItemRes =
-                                                                          await UsereditCall
-                                                                              .call(
-                                                                        userJson:
-                                                                            usersItem,
-                                                                        userName:
-                                                                            FFAppState().userName,
-                                                                        password:
-                                                                            FFAppState().password,
-                                                                      );
-                                                                      if ((_model
-                                                                              .userItemRes
-                                                                              ?.succeeded ??
-                                                                          true)) {
-                                                                        ScaffoldMessenger.of(context)
-                                                                            .showSnackBar(
-                                                                          SnackBar(
-                                                                            content:
-                                                                                Text(
-                                                                              (_model.userItemRes?.jsonBody ?? '').toString(),
-                                                                              style: TextStyle(
-                                                                                color: FlutterFlowTheme.of(context).primaryText,
-                                                                              ),
-                                                                            ),
-                                                                            duration:
-                                                                                Duration(milliseconds: 4000),
-                                                                            backgroundColor:
-                                                                                FlutterFlowTheme.of(context).secondaryColor,
-                                                                          ),
-                                                                        );
-                                                                      } else {
-                                                                        ScaffoldMessenger.of(context)
-                                                                            .showSnackBar(
-                                                                          SnackBar(
-                                                                            content:
-                                                                                Text(
-                                                                              (_model.userItemRes?.statusCode ?? 200).toString(),
-                                                                              style: TextStyle(
-                                                                                color: FlutterFlowTheme.of(context).primaryText,
-                                                                              ),
-                                                                            ),
-                                                                            duration:
-                                                                                Duration(milliseconds: 4000),
-                                                                            backgroundColor:
-                                                                                FlutterFlowTheme.of(context).secondaryColor,
-                                                                          ),
-                                                                        );
-                                                                      }
-
-                                                                      setState(
-                                                                          () {});
-                                                                    },
-                                                                    child: ListView
-                                                                        .builder(
-                                                                      padding:
-                                                                          EdgeInsets
-                                                                              .zero,
-                                                                      shrinkWrap:
-                                                                          true,
-                                                                      scrollDirection:
-                                                                          Axis.vertical,
-                                                                      itemCount:
-                                                                          roles
-                                                                              .length,
-                                                                      itemBuilder:
-                                                                          (context,
-                                                                              rolesIndex) {
-                                                                        final rolesItem =
-                                                                            roles[rolesIndex];
-                                                                        return Theme(
-                                                                          data:
-                                                                              ThemeData(
-                                                                            unselectedWidgetColor:
-                                                                                Color(0xFF95A1AC),
-                                                                          ),
-                                                                          child:
-                                                                              CheckboxListTile(
-                                                                            value: _model.checkboxListTileValueMap[rolesItem] ??=
-                                                                                true,
-                                                                            onChanged:
-                                                                                (newValue) async {
-                                                                              setState(() => _model.checkboxListTileValueMap[rolesItem] = newValue!);
-                                                                            },
-                                                                            title:
-                                                                                Text(
-                                                                              getJsonField(
-                                                                                usersItem,
-                                                                                r'''$.role''',
-                                                                              ).toString(),
-                                                                              style: FlutterFlowTheme.of(context).title3,
-                                                                            ),
-                                                                            tileColor:
-                                                                                Color(0xFFF5F5F5),
-                                                                            activeColor:
-                                                                                FlutterFlowTheme.of(context).primaryColor,
-                                                                            dense:
-                                                                                true,
-                                                                            controlAffinity:
-                                                                                ListTileControlAffinity.leading,
-                                                                          ),
-                                                                        );
-                                                                      },
-                                                                    ),
-                                                                  );
-                                                                },
-                                                              ),
-                                                            ),
-                                                            if (responsiveVisibility(
-                                                              context: context,
-                                                              phone: false,
-                                                              tablet: false,
-                                                            ))
-                                                              Expanded(
-                                                                child: Text(
-                                                                  dateTimeFormat(
-                                                                      'relative',
-                                                                      getCurrentTimestamp),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyText1,
-                                                                ),
-                                                              ),
-                                                            Expanded(
-                                                              child: Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .end,
-                                                                children: [
-                                                                  Text(
-                                                                    'Active',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyText1
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).bodyText1Family,
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primaryColor,
-                                                                          useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyText1Family),
-                                                                        ),
-                                                                  ),
-                                                                  if (responsiveVisibility(
-                                                                    context:
-                                                                        context,
-                                                                    tablet:
-                                                                        false,
-                                                                    tabletLandscape:
-                                                                        false,
-                                                                    desktop:
-                                                                        false,
-                                                                  ))
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
                                                                     Padding(
                                                                       padding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
-                                                                          2.0,
                                                                           0.0,
+                                                                          12.0,
                                                                           0.0),
                                                                       child:
-                                                                          Text(
-                                                                        dateTimeFormat(
-                                                                            'relative',
-                                                                            getCurrentTimestamp),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyText2
-                                                                            .override(
-                                                                              fontFamily: FlutterFlowTheme.of(context).bodyText2Family,
-                                                                              color: FlutterFlowTheme.of(context).secondaryText,
-                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyText2Family),
-                                                                            ),
+                                                                          ClipRRect(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(12.0),
+                                                                        child:
+                                                                            CachedNetworkImage(
+                                                                          imageUrl:
+                                                                              'https://images.unsplash.com/photo-1611691543545-f19c70f74a29?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDQ0fHRvd0paRnNrcEdnfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
+                                                                          width:
+                                                                              40.0,
+                                                                          height:
+                                                                              40.0,
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                        ),
                                                                       ),
                                                                     ),
-                                                                ],
+                                                                    Column(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .start,
+                                                                      children: [
+                                                                        AutoSizeText(
+                                                                          getJsonField(
+                                                                            usersItem,
+                                                                            r'''$.name''',
+                                                                          ).toString().maybeHandleOverflow(
+                                                                                maxChars: 32,
+                                                                                replacement: '…',
+                                                                              ),
+                                                                          style:
+                                                                              FlutterFlowTheme.of(context).subtitle1,
+                                                                        ),
+                                                                        if (responsiveVisibility(
+                                                                          context:
+                                                                              context,
+                                                                          tabletLandscape:
+                                                                              false,
+                                                                          desktop:
+                                                                              false,
+                                                                        ))
+                                                                          Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                0.0,
+                                                                                2.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                            child:
+                                                                                Text(
+                                                                              'user@domainname.com',
+                                                                              style: FlutterFlowTheme.of(context).bodyText2,
+                                                                            ),
+                                                                          ),
+                                                                      ],
+                                                                    ),
+                                                                  ],
+                                                                ),
                                                               ),
-                                                            ),
-                                                          ],
+                                                              if (responsiveVisibility(
+                                                                context:
+                                                                    context,
+                                                                phone: false,
+                                                                tablet: false,
+                                                              ))
+                                                                Expanded(
+                                                                  flex: 2,
+                                                                  child: Text(
+                                                                    getJsonField(
+                                                                      usersItem,
+                                                                      r'''$.username''',
+                                                                    ).toString(),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyText1,
+                                                                  ),
+                                                                ),
+                                                              Expanded(
+                                                                child: Builder(
+                                                                  builder:
+                                                                      (context) {
+                                                                    final roles =
+                                                                        getJsonField(
+                                                                      usersItem,
+                                                                      r'''$.roles''',
+                                                                    ).toList();
+                                                                    return InkWell(
+                                                                      onTap:
+                                                                          () async {
+                                                                        _model.userItemRes =
+                                                                            await UsereditCall.call(
+                                                                          userJson:
+                                                                              usersItem,
+                                                                          userName:
+                                                                              FFAppState().userName,
+                                                                          password:
+                                                                              FFAppState().password,
+                                                                        );
+                                                                        if ((_model.userItemRes?.succeeded ??
+                                                                            true)) {
+                                                                          ScaffoldMessenger.of(context)
+                                                                              .showSnackBar(
+                                                                            SnackBar(
+                                                                              content: Text(
+                                                                                (_model.userItemRes?.jsonBody ?? '').toString(),
+                                                                                style: TextStyle(
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                ),
+                                                                              ),
+                                                                              duration: Duration(milliseconds: 4000),
+                                                                              backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
+                                                                            ),
+                                                                          );
+                                                                        } else {
+                                                                          ScaffoldMessenger.of(context)
+                                                                              .showSnackBar(
+                                                                            SnackBar(
+                                                                              content: Text(
+                                                                                (_model.userItemRes?.statusCode ?? 200).toString(),
+                                                                                style: TextStyle(
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                ),
+                                                                              ),
+                                                                              duration: Duration(milliseconds: 4000),
+                                                                              backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
+                                                                            ),
+                                                                          );
+                                                                        }
+
+                                                                        setState(
+                                                                            () {});
+                                                                      },
+                                                                      child: ListView
+                                                                          .builder(
+                                                                        padding:
+                                                                            EdgeInsets.zero,
+                                                                        shrinkWrap:
+                                                                            true,
+                                                                        scrollDirection:
+                                                                            Axis.vertical,
+                                                                        itemCount:
+                                                                            roles.length,
+                                                                        itemBuilder:
+                                                                            (context,
+                                                                                rolesIndex) {
+                                                                          final rolesItem =
+                                                                              roles[rolesIndex];
+                                                                          return Theme(
+                                                                            data:
+                                                                                ThemeData(
+                                                                              unselectedWidgetColor: Color(0xFF95A1AC),
+                                                                            ),
+                                                                            child:
+                                                                                CheckboxListTile(
+                                                                              value: _model.checkboxListTileValueMap[rolesItem] ??= true,
+                                                                              onChanged: (newValue) async {
+                                                                                setState(() => _model.checkboxListTileValueMap[rolesItem] = newValue!);
+                                                                              },
+                                                                              title: Text(
+                                                                                getJsonField(
+                                                                                  usersItem,
+                                                                                  r'''$.role[0]''',
+                                                                                ).toString(),
+                                                                                style: FlutterFlowTheme.of(context).title3,
+                                                                              ),
+                                                                              tileColor: Color(0xFFF5F5F5),
+                                                                              activeColor: FlutterFlowTheme.of(context).primaryColor,
+                                                                              dense: true,
+                                                                              controlAffinity: ListTileControlAffinity.leading,
+                                                                            ),
+                                                                          );
+                                                                        },
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ),
+                                                              ),
+                                                              if (responsiveVisibility(
+                                                                context:
+                                                                    context,
+                                                                phone: false,
+                                                                tablet: false,
+                                                              ))
+                                                                Expanded(
+                                                                  child: Text(
+                                                                    dateTimeFormat(
+                                                                        'relative',
+                                                                        getCurrentTimestamp),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyText1,
+                                                                  ),
+                                                                ),
+                                                              Expanded(
+                                                                child: Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .end,
+                                                                  children: [
+                                                                    Text(
+                                                                      'Active',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyText1
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).bodyText1Family,
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primaryColor,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyText1Family),
+                                                                          ),
+                                                                    ),
+                                                                    if (responsiveVisibility(
+                                                                      context:
+                                                                          context,
+                                                                      tablet:
+                                                                          false,
+                                                                      tabletLandscape:
+                                                                          false,
+                                                                      desktop:
+                                                                          false,
+                                                                    ))
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            2.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            Text(
+                                                                          dateTimeFormat(
+                                                                              'relative',
+                                                                              getCurrentTimestamp),
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyText2
+                                                                              .override(
+                                                                                fontFamily: FlutterFlowTheme.of(context).bodyText2Family,
+                                                                                color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyText2Family),
+                                                                              ),
+                                                                        ),
+                                                                      ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  );
-                                                },
-                                              ),
-                                            );
-                                          },
-                                        );
-                                      },
+                                                    );
+                                                  },
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        },
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),

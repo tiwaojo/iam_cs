@@ -188,7 +188,7 @@ class ThreaddeleteCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'threaddelete',
-      apiUrl: 'http://localhost:8080/api/v1/thread/delete/{threadId}',
+      apiUrl: 'http://localhost:8080/api/v1/thread/delete/',
       callType: ApiCallType.DELETE,
       headers: {
         'username': '${userName}',
