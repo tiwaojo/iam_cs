@@ -198,9 +198,7 @@ class ThreaddeleteCall {
         'username': '${userName}',
         'password': '${password}',
       },
-      params: {
-        'threadId': threadId,
-      },
+      params: {},
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -326,9 +324,7 @@ class DeletecommentCall {
         'username': '${userName}',
         'password': '${password}',
       },
-      params: {
-        'commentId': commentId,
-      },
+      params: {},
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
