@@ -326,8 +326,6 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                       final thread =
                                                           listViewThreadlistResponse
                                                               .jsonBody
-                                                              .toList()
-                                                              .take(10)
                                                               .toList();
                                                       return ListView.builder(
                                                         padding:

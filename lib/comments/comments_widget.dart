@@ -273,9 +273,6 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                               final pageItems =
                                                   listViewCommentlistResponse
                                                       .jsonBody
-                                                      .take(10 -
-                                                          nextPageMarker
-                                                              .numItems)
                                                       .toList() as List;
                                               final newNumItems =
                                                   nextPageMarker.numItems +
@@ -283,8 +280,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                               _model.pagingController!
                                                   .appendPage(
                                                 pageItems,
-                                                (pageItems.length > 0) &&
-                                                        newNumItems < 10
+                                                (pageItems.length > 0)
                                                     ? ApiPagingParams(
                                                         nextPageNumber:
                                                             nextPageMarker
