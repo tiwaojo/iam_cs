@@ -17,8 +17,6 @@ class ThreadsModel extends FlutterFlowModel {
 
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel;
-  // Stores action output result for [Backend Call - API (thread)] action in Button widget.
-  ApiCallResponse? getThreadRes;
   // Stores action output result for [Backend Call - API (threaddelete)] action in Button widget.
   ApiCallResponse? deleteThreadRes;
 

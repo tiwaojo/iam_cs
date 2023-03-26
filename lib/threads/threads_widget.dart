@@ -528,52 +528,27 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                                               ),
                                                                             FFButtonWidget(
                                                                               onPressed: () async {
-                                                                                _model.getThreadRes = await ThreadCall.call(
-                                                                                  userName: FFAppState().userName,
-                                                                                  password: FFAppState().password,
-                                                                                  threadId: getJsonField(
-                                                                                    threadItem,
-                                                                                    r'''$.threadId''',
-                                                                                  ).toString(),
-                                                                                );
-                                                                                if ((_model.getThreadRes?.succeeded ?? true)) {
-                                                                                  await showModalBottomSheet(
-                                                                                    isScrollControlled: true,
-                                                                                    backgroundColor: Colors.transparent,
-                                                                                    barrierColor: Color(0x00000000),
-                                                                                    isDismissible: false,
-                                                                                    context: context,
-                                                                                    builder: (context) {
-                                                                                      return Padding(
-                                                                                        padding: MediaQuery.of(context).viewInsets,
-                                                                                        child: Container(
-                                                                                          height: MediaQuery.of(context).size.height * 0.5,
-                                                                                          child: CreateCommentWidget(
-                                                                                            threadID: getJsonField(
-                                                                                              threadItem,
-                                                                                              r'''$.threadId''',
-                                                                                            ),
+                                                                                await showModalBottomSheet(
+                                                                                  isScrollControlled: true,
+                                                                                  backgroundColor: Colors.transparent,
+                                                                                  barrierColor: Color(0x00000000),
+                                                                                  isDismissible: false,
+                                                                                  context: context,
+                                                                                  builder: (context) {
+                                                                                    return Padding(
+                                                                                      padding: MediaQuery.of(context).viewInsets,
+                                                                                      child: Container(
+                                                                                        height: MediaQuery.of(context).size.height * 0.5,
+                                                                                        child: CreateCommentWidget(
+                                                                                          threadID: getJsonField(
+                                                                                            threadItem,
+                                                                                            r'''$.threadId''',
                                                                                           ),
                                                                                         ),
-                                                                                      );
-                                                                                    },
-                                                                                  ).then((value) => setState(() {}));
-                                                                                } else {
-                                                                                  ScaffoldMessenger.of(context).showSnackBar(
-                                                                                    SnackBar(
-                                                                                      content: Text(
-                                                                                        (_model.getThreadRes?.statusCode ?? 200).toString(),
-                                                                                        style: TextStyle(
-                                                                                          color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                        ),
                                                                                       ),
-                                                                                      duration: Duration(milliseconds: 4000),
-                                                                                      backgroundColor: FlutterFlowTheme.of(context).primary600,
-                                                                                    ),
-                                                                                  );
-                                                                                }
-
-                                                                                setState(() {});
+                                                                                    );
+                                                                                  },
+                                                                                ).then((value) => setState(() {}));
                                                                               },
                                                                               text: 'Create Comment',
                                                                               options: FFButtonOptions(
