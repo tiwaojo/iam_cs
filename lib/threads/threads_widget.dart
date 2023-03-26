@@ -616,6 +616,8 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                                                     threadItem,
                                                                                     r'''$.threadId''',
                                                                                   ),
+                                                                                  userName: FFAppState().userName,
+                                                                                  password: FFAppState().password,
                                                                                 );
                                                                                 if ((_model.deleteThreadRes?.succeeded ?? true)) {
                                                                                   ScaffoldMessenger.of(context).showSnackBar(
