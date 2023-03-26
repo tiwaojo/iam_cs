@@ -192,7 +192,7 @@ class ThreaddeleteCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'threaddelete',
-      apiUrl: 'http://localhost:8080/api/v1/thread/delete/',
+      apiUrl: 'http://localhost:8080/api/v1/thread/delete/${threadId}',
       callType: ApiCallType.DELETE,
       headers: {
         'username': '${userName}',
@@ -318,7 +318,7 @@ class DeletecommentCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'deletecomment',
-      apiUrl: 'http://localhost:8080/api/v1/comment/delete/',
+      apiUrl: 'http://localhost:8080/api/v1/comment/delete/${commentId}',
       callType: ApiCallType.DELETE,
       headers: {
         'username': '${userName}',
