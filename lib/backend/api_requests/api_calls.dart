@@ -312,7 +312,7 @@ class DeletecommentCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'deletecomment',
-      apiUrl: 'http://localhost:8080api/v1/comment/delete/{commentId}',
+      apiUrl: 'http://localhost:8080/api/v1/comment/delete/{commentId}',
       callType: ApiCallType.DELETE,
       headers: {
         'username': '${userName}',
