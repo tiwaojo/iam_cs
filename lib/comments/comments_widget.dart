@@ -374,14 +374,12 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                                               .start,
                                                                       children: [
                                                                         AutoSizeText(
-                                                                          widget
-                                                                              .userEmail!
+                                                                          FFAppState()
+                                                                              .userName
                                                                               .maybeHandleOverflow(
-                                                                            maxChars:
-                                                                                32,
-                                                                            replacement:
-                                                                                '…',
-                                                                          ),
+                                                                                maxChars: 32,
+                                                                                replacement: '…',
+                                                                              ),
                                                                           style:
                                                                               FlutterFlowTheme.of(context).subtitle1,
                                                                         ),
@@ -582,6 +580,10 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                                               commentsItem,
                                                                               r'''$.commentId''',
                                                                             ),
+                                                                            userName:
+                                                                                FFAppState().userName,
+                                                                            password:
+                                                                                FFAppState().password,
                                                                           );
                                                                           if ((_model.deleteCommentRes?.succeeded ??
                                                                               true)) {
