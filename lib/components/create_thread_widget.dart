@@ -308,17 +308,18 @@ class _CreateThreadWidgetState extends State<CreateThreadWidget> {
                             createdBy: FFAppState().userName,
                           );
                           if ((_model.threadCreateRes?.succeeded ?? true)) {
+                            ScaffoldMessenger.of(context).clearSnackBars();
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  (_model.threadCreateRes?.bodyText ?? ''),
+                                  '${(_model.threadCreateRes?.statusCode ?? 200).toString()}${(_model.threadCreateRes?.jsonBody ?? '').toString()}',
                                   style: TextStyle(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                   ),
                                 ),
                                 duration: Duration(milliseconds: 4000),
-                                backgroundColor: Color(0x00000000),
+                                backgroundColor: Color(0xFF36FF0D),
                               ),
                             );
                             Navigator.pop(context);

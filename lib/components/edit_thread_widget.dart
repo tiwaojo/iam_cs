@@ -325,16 +325,14 @@ class _EditThreadWidgetState extends State<EditThreadWidget> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  (_model.threadEditRes?.jsonBody ?? '')
-                                      .toString(),
+                                  '${(_model.threadEditRes?.statusCode ?? 200).toString()}${(_model.threadEditRes?.jsonBody ?? '').toString()}',
                                   style: TextStyle(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                   ),
                                 ),
                                 duration: Duration(milliseconds: 4000),
-                                backgroundColor:
-                                    FlutterFlowTheme.of(context).secondaryColor,
+                                backgroundColor: Color(0xFF36FF0D),
                               ),
                             );
                             Navigator.pop(context);

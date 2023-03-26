@@ -569,16 +569,18 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                                         if ((_model.deleteCommentRes?.succeeded ??
                                                                             true)) {
                                                                           ScaffoldMessenger.of(context)
+                                                                              .clearSnackBars();
+                                                                          ScaffoldMessenger.of(context)
                                                                               .showSnackBar(
                                                                             SnackBar(
                                                                               content: Text(
-                                                                                'Comment deleted',
+                                                                                '${(_model.deleteCommentRes?.statusCode ?? 200).toString()}${(_model.deleteCommentRes?.jsonBody ?? '').toString()}',
                                                                                 style: TextStyle(
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                 ),
                                                                               ),
                                                                               duration: Duration(milliseconds: 4000),
-                                                                              backgroundColor: Color(0x00000000),
+                                                                              backgroundColor: Color(0xFF36FF0D),
                                                                             ),
                                                                           );
                                                                         } else {

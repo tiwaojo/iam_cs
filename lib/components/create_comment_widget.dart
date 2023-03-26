@@ -318,14 +318,14 @@ class _CreateCommentWidgetState extends State<CreateCommentWidget> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  (_model.commentCreateRes?.bodyText ?? ''),
+                                  '${(_model.commentCreateRes?.statusCode ?? 200).toString()}${(_model.commentCreateRes?.jsonBody ?? '').toString()}',
                                   style: TextStyle(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                   ),
                                 ),
                                 duration: Duration(milliseconds: 4000),
-                                backgroundColor: Color(0x00000000),
+                                backgroundColor: Color(0xFF36FF0D),
                               ),
                             );
                             Navigator.pop(context);

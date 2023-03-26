@@ -618,16 +618,17 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                                                   password: FFAppState().password,
                                                                                 );
                                                                                 if ((_model.deleteThreadRes?.succeeded ?? true)) {
+                                                                                  ScaffoldMessenger.of(context).clearSnackBars();
                                                                                   ScaffoldMessenger.of(context).showSnackBar(
                                                                                     SnackBar(
                                                                                       content: Text(
-                                                                                        'Comment deleted',
+                                                                                        '${(_model.deleteThreadRes?.statusCode ?? 200).toString()}${(_model.deleteThreadRes?.jsonBody ?? '').toString()}',
                                                                                         style: TextStyle(
                                                                                           color: FlutterFlowTheme.of(context).primaryText,
                                                                                         ),
                                                                                       ),
                                                                                       duration: Duration(milliseconds: 4000),
-                                                                                      backgroundColor: Color(0x00000000),
+                                                                                      backgroundColor: Color(0xFF36FF0D),
                                                                                     ),
                                                                                   );
                                                                                 } else {

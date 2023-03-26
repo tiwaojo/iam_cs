@@ -325,17 +325,18 @@ class _EditCommentWidgetState extends State<EditCommentWidget> {
                             ).toString(),
                           );
                           if ((_model.commentEditRes?.succeeded ?? true)) {
+                            ScaffoldMessenger.of(context).clearSnackBars();
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  (_model.commentEditRes?.bodyText ?? ''),
+                                  '${(_model.commentEditRes?.statusCode ?? 200).toString()}${(_model.commentEditRes?.jsonBody ?? '').toString()}',
                                   style: TextStyle(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                   ),
                                 ),
                                 duration: Duration(milliseconds: 4000),
-                                backgroundColor: Color(0x00000000),
+                                backgroundColor: Color(0xFF36FF0D),
                               ),
                             );
                             Navigator.pop(context);
