@@ -177,7 +177,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(8.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                'Member Name',
+                                                'Created By',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyText2,
@@ -354,8 +354,11 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                                             .start,
                                                                     children: [
                                                                       AutoSizeText(
-                                                                        FFAppState()
-                                                                            .userName
+                                                                        getJsonField(
+                                                                          commentsItem,
+                                                                          r'''$.createdBy''',
+                                                                        )
+                                                                            .toString()
                                                                             .maybeHandleOverflow(
                                                                               maxChars: 32,
                                                                               replacement: '…',

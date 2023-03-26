@@ -324,6 +324,7 @@ class _CreateThreadWidgetState extends State<CreateThreadWidget> {
                             );
                             Navigator.pop(context);
                           } else {
+                            ScaffoldMessenger.of(context).clearSnackBars();
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
@@ -333,7 +334,7 @@ class _CreateThreadWidgetState extends State<CreateThreadWidget> {
                                         .primaryText,
                                   ),
                                 ),
-                                duration: Duration(milliseconds: 4000),
+                                duration: Duration(milliseconds: 10000),
                                 backgroundColor:
                                     FlutterFlowTheme.of(context).primary600,
                               ),

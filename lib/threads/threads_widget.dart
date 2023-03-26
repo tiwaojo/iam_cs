@@ -228,7 +228,7 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        'Member Name',
+                                                        'Created By',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -244,7 +244,7 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                     Expanded(
                                                       flex: 2,
                                                       child: Text(
-                                                        'Comment Title',
+                                                        'Thread Title',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -271,7 +271,7 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                   ))
                                                     Expanded(
                                                       child: Text(
-                                                        'Comment Content',
+                                                        'Thread  Content',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -413,7 +413,10 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                                                 CrossAxisAlignment.start,
                                                                             children: [
                                                                               AutoSizeText(
-                                                                                FFAppState().userName.maybeHandleOverflow(
+                                                                                getJsonField(
+                                                                                  threadItem,
+                                                                                  r'''$.createdBy''',
+                                                                                ).toString().maybeHandleOverflow(
                                                                                       maxChars: 32,
                                                                                       replacement: '…',
                                                                                     ),

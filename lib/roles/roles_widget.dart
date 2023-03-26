@@ -166,7 +166,7 @@ class _RolesWidgetState extends State<RolesWidget> {
                                             Expanded(
                                               flex: 2,
                                               child: Text(
-                                                'Email',
+                                                'Username',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyText2,

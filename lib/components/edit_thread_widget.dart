@@ -347,7 +347,7 @@ class _EditThreadWidgetState extends State<EditThreadWidget> {
                                         .primaryText,
                                   ),
                                 ),
-                                duration: Duration(milliseconds: 4000),
+                                duration: Duration(milliseconds: 10000),
                                 backgroundColor:
                                     FlutterFlowTheme.of(context).primary600,
                               ),
