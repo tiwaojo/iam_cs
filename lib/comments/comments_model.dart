@@ -10,7 +10,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
 
 class CommentsModel extends FlutterFlowModel {
@@ -18,8 +17,7 @@ class CommentsModel extends FlutterFlowModel {
 
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel;
-  // State field(s) for ListView widget.
-  PagingController<ApiPagingParams, dynamic>? pagingController;
+  Completer<ApiCallResponse>? apiRequestCompleter;
   // Stores action output result for [Backend Call - API (deletecomment)] action in Button widget.
   ApiCallResponse? deleteCommentRes;
 
@@ -35,7 +33,7 @@ class CommentsModel extends FlutterFlowModel {
 
   /// Additional helper methods are added here.
 
-  Future waitForOnePage({
+  Future waitForApiRequestCompleted({
     double minWait = 0,
     double maxWait = double.infinity,
   }) async {
@@ -43,8 +41,7 @@ class CommentsModel extends FlutterFlowModel {
     while (true) {
       await Future.delayed(Duration(milliseconds: 50));
       final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete =
-          (pagingController?.nextPageKey?.nextPageNumber ?? 0) > 0;
+      final requestComplete = apiRequestCompleter?.isCompleted ?? false;
       if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
         break;
       }
