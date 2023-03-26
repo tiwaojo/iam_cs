@@ -549,7 +549,10 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                                                         child: Container(
                                                                                           height: MediaQuery.of(context).size.height * 0.5,
                                                                                           child: CreateCommentWidget(
-                                                                                            threadID: 0,
+                                                                                            threadID: getJsonField(
+                                                                                              threadItem,
+                                                                                              r'''$.threadId''',
+                                                                                            ),
                                                                                           ),
                                                                                         ),
                                                                                       );
@@ -559,9 +562,9 @@ class _ThreadsWidgetState extends State<ThreadsWidget> {
                                                                                   ScaffoldMessenger.of(context).showSnackBar(
                                                                                     SnackBar(
                                                                                       content: Text(
-                                                                                        (_model.getThreadRes?.jsonBody ?? '').toString(),
+                                                                                        (_model.getThreadRes?.statusCode ?? 200).toString(),
                                                                                         style: TextStyle(
-                                                                                          color: FlutterFlowTheme.of(context).primaryText,
+                                                                                          color: FlutterFlowTheme.of(context).secondaryText,
                                                                                         ),
                                                                                       ),
                                                                                       duration: Duration(milliseconds: 4000),
