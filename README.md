@@ -1,6 +1,6 @@
 # CS PROJECT
 
-A new Flutter project.
+A user interface for the Identity and Access Management(IAM) Spring Boot Application for the Computer Security course. Final Report can be viewed [here](Project%20Final%20Report%20CS%20Group%208.pdf).
 
 ## Getting Started
 
